@@ -1,27 +1,33 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { useTheme } from './ThemeProvider';
-import { Quote, ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { Play, X, ChevronLeft, ChevronRight } from 'lucide-react';
+
+const CDN = 'https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/';
 
 const testimonials = [
   {
-    quote: "TOSTEM windows transformed our home completely. The thermal break technology has made our living room so much more comfortable, and the noise reduction is remarkable. Truly Japanese quality!",
-    name: 'Rajesh Sharma',
-    location: 'Mumbai, Maharashtra',
-    rating: 5,
+    title: 'Mr. Amarnath',
+    subtitle: 'Customer Testimonial',
+    videoUrl: 'https://www.tostemindia.com/wp-content/uploads/2024/09/Customer-Testimonial-Mr.-Amarnath-Deltra-Global.mp4',
+    thumbnail: CDN + 'wp-content/uploads/2024/09/Customer-Testimonial-Mr.-Amarnath-Deltra-Global.jpg',
+    quote: 'We are extremely happy with TOSTEM windows. The quality and finish are outstanding, and the installation team was very professional.',
   },
   {
-    quote: "We installed TOSTEM sliding doors for our new villa, and the result is stunning. The build quality, smooth operation, and elegant design exceeded our expectations. Highly recommended!",
-    name: 'Priya Patel',
-    location: 'Bangalore, Karnataka',
-    rating: 5,
+    title: 'Mr. Dheeraj',
+    subtitle: 'Customer Testimonial — Hyderabad',
+    videoUrl: 'https://www.tostemindia.com/wp-content/uploads/2024/09/Customer-Testimonial-Mr.-Dheeraj-Hyderabad-Deltra-Global.mp4',
+    thumbnail: CDN + 'wp-content/uploads/2024/09/Customer-Testimonial-Mr.-Dheeraj-Hyderabad-Deltra-Global.jpg',
+    quote: 'TOSTEM windows have completely transformed our home. The sound insulation is remarkable and the design is elegant.',
   },
   {
-    quote: "As an architect, I recommend TOSTEM to all my clients. The range of colours, the precision engineering, and the after-sales support are unmatched in the Indian market.",
-    name: 'Ar. Vikram Mehta',
-    location: 'Delhi NCR',
-    rating: 5,
+    title: 'Real Homes, Real Stories',
+    subtitle: 'Deltra Aluminium Doors & Windows',
+    videoUrl: 'https://www.tostemindia.com/wp-content/uploads/2024/09/Real-Homes-Real-Stories-Deltra-Aluminum-Doors-Windows.mp4',
+    thumbnail: CDN + 'wp-content/uploads/2024/09/Real-Homes-Real-Stories-Deltra-Aluminum-Doors-Windows.jpg',
+    quote: 'Real homes featuring TOSTEM aluminium doors and windows — hear directly from homeowners about their experience.',
   },
 ];
 
@@ -29,6 +35,7 @@ export default function TestimonialsSection() {
   const { colorTheme, designTheme } = useTheme();
   const [current, setCurrent] = useState(0);
   const [visible, setVisible] = useState(false);
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -43,7 +50,7 @@ export default function TestimonialsSection() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
+    }, 7000);
     return () => clearInterval(timer);
   }, []);
 
@@ -64,94 +71,151 @@ export default function TestimonialsSection() {
           >
             What Our Clients Say
           </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            We have a wealth of happy customers who can&apos;t help but shout about our excellent services.
+          </p>
         </div>
 
-        {/* Testimonial Carousel */}
-        <div className={`max-w-4xl mx-auto transition-all duration-700 ${visible ? 'opacity-100' : 'opacity-0'}`}>
-          <div
-            className="relative p-8 md:p-12 text-center"
-            style={{
-              borderRadius: designTheme.cardRadius,
-              boxShadow: designTheme.cardShadow,
-              border: designTheme.cardBorder,
-              background: designTheme.cardBg,
-            }}
-          >
-            {/* Quote icon */}
-            <div className="flex justify-center mb-6">
+        {/* Testimonial Cards */}
+        <div className={`transition-all duration-700 ${visible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="grid md:grid-cols-3 gap-6">
+            {testimonials.map((testimonial, i) => (
               <div
-                className="w-14 h-14 rounded-full flex items-center justify-center"
-                style={{ background: `${colorTheme.accent}15` }}
+                key={testimonial.title}
+                className={`group transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                style={{ transitionDelay: `${i * 150}ms` }}
               >
-                <Quote className="w-6 h-6" style={{ color: colorTheme.accent }} />
+                <div
+                  className="overflow-hidden card-hover-lift"
+                  style={{
+                    borderRadius: designTheme.cardRadius,
+                    boxShadow: designTheme.cardShadow,
+                    border: designTheme.cardBorder,
+                    background: designTheme.cardBg,
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.boxShadow = designTheme.cardHoverShadow; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.boxShadow = designTheme.cardShadow; }}
+                >
+                  {/* Video Thumbnail */}
+                  <div className="relative aspect-video overflow-hidden cursor-pointer">
+                    {playingVideo === testimonial.videoUrl ? (
+                      <div className="relative w-full h-full">
+                        <video
+                          autoPlay
+                          controls
+                          className="w-full h-full object-cover"
+                        >
+                          <source src={testimonial.videoUrl} type="video/mp4" />
+                        </video>
+                        <button
+                          onClick={() => setPlayingVideo(null)}
+                          className="absolute top-3 right-3 p-1.5 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all z-10"
+                          aria-label="Close video"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+                    ) : (
+                      <>
+                        <Image
+                          src={testimonial.thumbnail}
+                          alt={testimonial.title}
+                          fill
+                          unoptimized
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                        />
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-all duration-500" />
+                        {/* Play Button */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <button
+                            onClick={() => setPlayingVideo(testimonial.videoUrl)}
+                            className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                            style={{
+                              background: colorTheme.accent,
+                              boxShadow: `0 0 20px ${colorTheme.accent}60`,
+                            }}
+                            aria-label={`Play ${testimonial.title} video`}
+                          >
+                            <Play className="w-6 h-6 text-white ml-0.5" />
+                          </button>
+                        </div>
+                        {/* Duration badge */}
+                        <div className="absolute bottom-3 right-3 px-2 py-0.5 bg-black/60 text-white text-xs rounded">
+                          Video
+                        </div>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-5">
+                    <h4
+                      className="text-lg font-bold text-gray-900 mb-1"
+                      style={{ fontWeight: 'var(--design-heading-weight, 700)' }}
+                    >
+                      {testimonial.title}
+                    </h4>
+                    <p className="text-xs font-medium mb-3" style={{ color: colorTheme.accent }}>
+                      {testimonial.subtitle}
+                    </p>
+                    <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                      &ldquo;{testimonial.quote}&rdquo;
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-
-            {/* Stars */}
-            <div className="flex justify-center gap-1 mb-6">
-              {Array.from({ length: testimonials[current].rating }).map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-current" style={{ color: '#f59e0b' }} />
-              ))}
-            </div>
-
-            {/* Quote text */}
-            <blockquote
-              key={current}
-              className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 animate-fade-in"
-            >
-              &ldquo;{testimonials[current].quote}&rdquo;
-            </blockquote>
-
-            {/* Author */}
-            <div className="animate-fade-in">
-              <div
-                className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center text-white font-bold text-lg"
-                style={{ background: colorTheme.accent }}
-              >
-                {testimonials[current].name.charAt(0)}
-              </div>
-              <div className="font-bold text-gray-900">{testimonials[current].name}</div>
-              <div className="text-sm text-gray-500">{testimonials[current].location}</div>
-            </div>
-
-            {/* Navigation */}
-            <div className="flex items-center justify-center gap-4 mt-8">
-              <button
-                onClick={() => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-                className="p-2 rounded-full transition-all hover:scale-110"
-                style={{ background: `${colorTheme.accent}15`, color: colorTheme.accent }}
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <div className="flex gap-2">
-                {testimonials.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrent(i)}
-                    className="transition-all duration-300"
-                    style={{
-                      width: i === current ? '24px' : '8px',
-                      height: '8px',
-                      borderRadius: '4px',
-                      background: i === current ? colorTheme.accent : 'rgba(0,0,0,0.15)',
-                    }}
-                    aria-label={`Go to testimonial ${i + 1}`}
-                  />
-                ))}
-              </div>
-              <button
-                onClick={() => setCurrent((prev) => (prev + 1) % testimonials.length)}
-                className="p-2 rounded-full transition-all hover:scale-110"
-                style={{ background: `${colorTheme.accent}15`, color: colorTheme.accent }}
-                aria-label="Next testimonial"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
+            ))}
           </div>
         </div>
+
+        {/* Navigation dots */}
+        <div className="flex items-center justify-center gap-2 mt-8">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className="transition-all duration-300"
+              style={{
+                width: i === current ? '24px' : '8px',
+                height: '8px',
+                borderRadius: '4px',
+                background: i === current ? colorTheme.accent : 'rgba(0,0,0,0.15)',
+              }}
+              aria-label={`Go to testimonial ${i + 1}`}
+            />
+          ))}
+        </div>
       </div>
+
+      {/* Fullscreen Video Modal */}
+      {playingVideo && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4 modal-backdrop"
+          onClick={() => setPlayingVideo(null)}
+        >
+          <div
+            className="relative w-full max-w-4xl aspect-video overflow-hidden modal-content"
+            style={{ borderRadius: designTheme.cardRadius }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <video
+              autoPlay
+              controls
+              className="w-full h-full object-cover"
+            >
+              <source src={playingVideo} type="video/mp4" />
+            </video>
+            <button
+              onClick={() => setPlayingVideo(null)}
+              className="absolute top-4 right-4 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-all z-10"
+              aria-label="Close video"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

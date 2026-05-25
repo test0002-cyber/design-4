@@ -1,49 +1,52 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { useTheme } from './ThemeProvider';
 import { Clock, X, ArrowRight, Tag } from 'lucide-react';
+
+const CDN = 'https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/';
 
 const blogs = [
   {
     id: 1,
-    title: 'The Complete Guide to Aluminium Windows',
-    excerpt: 'Discover everything about aluminium windows, from types and benefits to installation and maintenance tips...',
-    content: `Aluminium windows have become the preferred choice for modern homes and commercial buildings across India. Their combination of strength, durability, and sleek aesthetics makes them an ideal solution for contemporary architecture.\n\n## Types of Aluminium Windows\n\n**Sliding Windows** are perfect for spaces where you want maximum ventilation without the window projecting inward or outward. They operate on a horizontal track system and are ideal for rooms with limited space.\n\n**Casement Windows** open outward like a door, providing excellent ventilation and unobstructed views. They offer superior sealing when closed, making them ideal for energy efficiency.\n\n**Fixed Windows** don't open but provide maximum natural light and panoramic views. They're often combined with operable windows for a complete solution.\n\n**Tilt & Turn Windows** offer dual functionality - tilt for ventilation or turn fully for easy cleaning and maximum airflow.\n\n## Benefits of Aluminium Windows\n\n1. **Durability**: Aluminium doesn't rust, rot, or warp, lasting 30+ years with minimal maintenance\n2. **Strength**: Supports larger glass panes with slimmer frames\n3. **Energy Efficiency**: Thermal break technology provides excellent insulation\n4. **Low Maintenance**: No painting or sealing required\n5. **Eco-Friendly**: 100% recyclable material\n\n## Installation Tips\n\nAlways work with certified installers who follow manufacturer specifications. Proper installation is crucial for performance, water resistance, and longevity. Ensure proper flashing and sealing around all joints.`,
-    date: '15 Jan 2025',
-    category: 'Guide',
-    readTime: '8 min read',
-    gradient: 'from-blue-900 to-blue-600',
+    title: 'Different Stained Glass Designs for Doors and Windows',
+    excerpt: 'Stained glass designs add character and charm to doors and windows, transforming ordinary spaces into extraordinary works of art. Discover the various styles, patterns, and techniques used in modern stained glass design for aluminium windows and doors.',
+    content: `Stained glass designs have been a timeless element in architecture, adding beauty, color, and character to doors and windows. Today, with modern aluminium framing technology, stained glass can be incorporated into contemporary homes with stunning results.\n\n## Types of Stained Glass Designs\n\n**Traditional Stained Glass** features hand-painted or kiln-fired designs with rich, vibrant colors. These work beautifully in casement and fixed windows, creating focal points that draw the eye.\n\n**Beveled Glass** uses angled cuts to create prismatic light effects. When sunlight passes through beveled glass, it creates rainbow reflections that dance across your room.\n\n**Etched Glass** offers a subtle, sophisticated look with frosted patterns that provide privacy while allowing light to pass through. Ideal for bathroom windows and entrance doors.\n\n**Textured Glass** incorporates three-dimensional surface patterns that add depth and visual interest while maintaining varying levels of privacy.\n\n## Incorporating Stained Glass in Aluminium Frames\n\nModern aluminium frames from TOSTEM provide the perfect structure for stained glass panels. The slim profiles maximise the visible glass area, while the robust aluminium frame ensures longevity and weather protection.\n\n## Design Tips\n\n1. **Consider the light direction** — East-facing windows get morning light, west-facing get evening warmth\n2. **Match your home style** — Art deco patterns for heritage homes, geometric for modern\n3. **Balance privacy and light** — Combine clear and textured glass panels\n4. **Think about colour harmony** — Stained glass colours should complement your interior palette`,
+    date: '10 Jan 2025',
+    category: 'Design',
+    readTime: '6 min read',
+    image: CDN + 'wp-content/uploads/2024/08/Different-Stained-Glass-Designs-for-Doors-and-Windows.jpg',
   },
   {
     id: 2,
-    title: 'Sliding vs Casement Windows: Which is Right for You?',
-    excerpt: 'Compare sliding and casement windows to find the perfect match for your home...',
-    content: `Choosing between sliding and casement windows is one of the most common decisions homeowners face. Both have distinct advantages, and the right choice depends on your specific needs, space constraints, and aesthetic preferences.\n\n## Sliding Windows\n\n**Advantages:**\n- Space-efficient design - no swing space needed\n- Easy to operate with minimal effort\n- Excellent for wide openings\n- Modern, clean aesthetic\n- Can accommodate fly screens easily\n\n**Best For:** Bedrooms, living rooms, areas with limited space, and modern architectural designs.\n\n## Casement Windows\n\n**Advantages:**\n- Superior ventilation - can catch and direct breezes\n- Better energy efficiency with tighter seals\n- Unobstructed views when open\n- Easier to clean from inside\n- Better security with multi-point locking\n\n**Best For:** Kitchens, bathrooms, areas needing maximum ventilation, and traditional homes.\n\n## Making Your Decision\n\nConsider these factors:\n1. **Space availability** - Sliding wins in tight spaces\n2. **Ventilation needs** - Casement provides better airflow\n3. **Energy efficiency** - Casement typically seals better\n4. **Maintenance** - Both are low-maintenance with aluminium\n5. **Aesthetic preference** - Sliding is modern, casement is classic`,
+    title: 'Plywood Almirah Design Ideas: Modern Storage Solutions with Window Integration',
+    excerpt: 'Explore creative plywood almirah designs that seamlessly integrate with modern window systems for optimised storage and natural light flow in your living spaces.',
+    content: `Modern plywood almirah designs are evolving beyond traditional standalone furniture pieces. Today\'s innovative approaches integrate storage solutions with window systems, creating seamless, space-efficient designs that maximise both storage and natural light.\n\n## Window-Integrated Storage Concepts\n\n**Bay Window Almirah** transforms the space around bay windows into built-in storage with seating. This creates a cozy reading nook with hidden storage beneath and shelves flanking the window.\n\n**Floor-to-Ceiling Window Wall Units** combine full-height aluminium windows with integrated storage cabinets on either side, creating a stunning wall feature that balances openness with functionality.\n\n**Window Seat Storage** utilises the space below windows for pull-out drawers and lift-top storage, perfect for bedrooms and living rooms.\n\n## Material Selection\n\nWhen combining plywood almirahs with aluminium window systems, consider:\n1. **Moisture-resistant plywood** — Essential near windows that may experience condensation\n2. **Matching finishes** — Coordinate plywood laminate colours with aluminium frame finishes\n3. **Hardware quality** — Use premium hinges and slides that complement window hardware\n4. **Thermal considerations** — Ensure adequate insulation between window and cabinet`,
     date: '22 Jan 2025',
-    category: 'Comparison',
-    readTime: '6 min read',
-    gradient: 'from-teal-900 to-teal-600',
+    category: 'Interior',
+    readTime: '5 min read',
+    image: CDN + 'wp-content/uploads/2024/07/Plywood-Almirah-banner.jpg',
   },
   {
     id: 3,
-    title: 'Why Thermal Break Windows Are Worth the Investment',
-    excerpt: 'Learn how thermal break technology can reduce energy costs and improve comfort...',
-    content: `Thermal break windows represent a significant advancement in window technology, and their growing popularity in India is well-deserved. Understanding the technology and its benefits can help you make an informed investment decision.\n\n## What is Thermal Break Technology?\n\nA thermal break is a polyamide (nylon) strip that separates the interior and exterior aluminium profiles. This barrier dramatically reduces heat transfer between the outside and inside of your home.\n\n## Key Benefits\n\n**Energy Savings**: Thermal break windows can reduce energy costs by up to 50% by minimizing heat gain in summer and heat loss in winter. This translates to significant savings on air conditioning and heating bills.\n\n**Condensation Control**: By maintaining a warmer interior surface temperature, thermal break windows significantly reduce condensation, preventing mold growth and water damage.\n\n**Sound Insulation**: The polyamide barrier also acts as an acoustic insulator, reducing noise transmission by up to 40% compared to standard aluminium windows.\n\n**Comfort**: More consistent indoor temperatures eliminate cold spots near windows, improving overall comfort.\n\n## Cost Analysis\n\nWhile thermal break windows cost 20-30% more upfront, the payback period is typically 3-5 years through energy savings alone. Over a 20-year lifespan, the total savings far exceed the initial investment.\n\n## Climate Considerations\n\nIn India's diverse climate zones, thermal break windows are particularly valuable in:\n- North India (extreme winters)\n- West India (intense summer heat)\n- High-altitude locations\n- Air-conditioned commercial buildings`,
+    title: 'French Doors vs Sliding Doors for Balcony: Which is a Better Option?',
+    excerpt: 'A detailed comparison between French doors and sliding doors for balcony access, helping you choose the best option for your home based on space, aesthetics, and functionality.',
+    content: `Choosing between French doors and sliding doors for your balcony is a significant decision that affects both the functionality and aesthetics of your living space. Let's break down the key differences to help you make an informed choice.\n\n## French Doors\n\nFrench doors are classic hinged doors that swing open inward or outward, typically in a double-door configuration.\n\n**Advantages:**\n- Classic, elegant aesthetic that adds character\n- Full opening width when both doors are open\n- Superior weather sealing when closed\n- Traditional charm that enhances property value\n- Can be fitted with multi-point locking systems\n\n**Best For:** Traditional homes, smaller balconies, properties where aesthetics are paramount.\n\n## Sliding Doors\n\nSliding doors operate on tracks, moving horizontally without requiring swing space.\n\n**Advantages:**\n- Space-efficient — no swing clearance needed\n- Can span much wider openings (up to 6m+)\n- Unobstructed views when closed\n- Modern, clean aesthetic\n- Easier to operate for elderly and children\n\n**Best For:** Modern homes, large balconies, spaces where you want maximum glass area.\n\n## Making Your Decision\n\nConsider: available space, balcony size, architectural style, frequency of use, and your budget. Both options are available in TOSTEM's premium aluminium series with thermal break technology.`,
     date: '5 Feb 2025',
-    category: 'Technology',
+    category: 'Comparison',
     readTime: '7 min read',
-    gradient: 'from-emerald-900 to-emerald-600',
+    image: CDN + 'wp-content/uploads/2024/06/French-Doors-627x317.jpg',
   },
   {
     id: 4,
-    title: 'Choosing the Right Door for Your Home',
-    excerpt: 'From sliding to fold-and-slide, find the perfect door solution for every room...',
-    content: `Doors are more than just entry points - they define the character of your home and impact daily living quality. Understanding different door types helps you make the perfect choice for each space.\n\n## Sliding Doors\n\nSliding doors are the versatile workhorse of modern homes. They operate on tracks, moving horizontally without requiring swing space.\n\n**Ideal For:** Patios, balconies, living rooms, and spaces where you want seamless indoor-outdoor flow.\n\n**Key Features:**\n- 2-track and 3-track options\n- Can span up to 6 meters wide\n- Interlock stiles for security\n- Available with built-in blinds\n\n## Casement Doors\n\nClassic hinged doors that swing open, offering a traditional feel with modern performance.\n\n**Ideal For:** Main entrances, bedroom balconies, and areas where a full opening is desired.\n\n**Key Features:**\n- Single or double door configurations\n- Multi-point locking for security\n- Superior weather sealing\n- Optional sidelights and transoms\n\n## Fold & Slide Doors\n\nThe ultimate in opening technology - these doors fold accordion-style to create massive openings.\n\n**Ideal For:** Large living spaces, restaurants, showrooms, and luxury homes.\n\n**Key Features:**\n- Can span 10+ meters\n- Panels stack neatly to one or both sides\n- Smooth roller mechanism\n- Creates a seamless wall-to-wall opening\n\n## Decision Framework\n\n1. **Measure your opening** - Width determines which options work\n2. **Consider usage frequency** - High-traffic areas need durable hardware\n3. **Think about furniture placement** - Swing doors need clearance\n4. **Climate matters** - Thermal break for extreme conditions\n5. **Security requirements** - Multi-point locks for ground floor`,
+    title: 'Amazing Aluminium Door Designs to Transform Your Home',
+    excerpt: 'Discover stunning aluminium door designs that combine modern aesthetics with superior performance. From sleek sliding doors to grand entrance solutions, find the perfect door for every space.',
+    content: `Aluminium doors have revolutionised home design in India, offering a perfect blend of strength, elegance, and low maintenance. Here are some amazing designs that can transform your home.\n\n## Sliding Door Designs\n\n**Full-Glass Sliding Doors** create a seamless connection between indoor and outdoor spaces. With TOSTEM's ultra-slim Grants series profiles, you get maximum glass area with minimal frame visibility.\n\n**Multi-Track Sliding Doors** allow multiple panels to stack, creating expansive openings perfect for living rooms opening onto terraces or gardens.\n\n## Casement Door Designs\n\n**French Casement Doors** offer timeless elegance with modern performance. Both panels open fully without a central mullion, providing unobstructed views and access.\n\n**Tilt-and-Turn Doors** provide dual functionality — tilt for ventilation or turn fully for access. Ideal for spaces where you want flexible operation options.\n\n## Entrance Door Designs\n\n**GIESTA Steel Entrance Doors** combine Italian design with robust steel construction. Available in numerous design panels, these doors make a powerful first impression while providing exceptional security.\n\n## Design Considerations\n\n1. **Frame colour** — Match or contrast with your window frames for visual coherence\n2. **Hardware finish** — Choose handles and locks that complement the door style\n3. **Glass type** — Consider privacy, insulation, and acoustic needs\n4. **Size proportions** — Larger doors create more visual impact and better flow`,
     date: '18 Feb 2025',
-    category: 'Guide',
+    category: 'Design',
     readTime: '5 min read',
-    gradient: 'from-amber-900 to-amber-600',
+    image: CDN + 'wp-content/uploads/2024/05/Amazing-Aluminium-Door-422x329.jpg',
   },
 ];
 
@@ -71,16 +74,16 @@ export default function BlogSection() {
             className="inline-block px-4 py-1.5 text-sm font-semibold rounded-full mb-4"
             style={{ color: colorTheme.accent, background: `${colorTheme.accent}15` }}
           >
-            Our Blog
+            Knowledge Experience
           </span>
           <h2
             className="text-3xl md:text-4xl lg:text-5xl mb-4 text-gray-900"
             style={{ fontWeight: 'var(--design-heading-weight, 700)' }}
           >
-            Latest Insights
+            Latest From Our Blog
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Expert advice and guides to help you make informed decisions about your windows and doors.
+            Expert advice, design inspiration, and guides to help you make informed decisions about windows and doors.
           </p>
         </div>
 
@@ -96,14 +99,20 @@ export default function BlogSection() {
                 borderRadius: designTheme.cardRadius,
                 boxShadow: designTheme.cardShadow,
                 border: designTheme.cardBorder,
+                background: designTheme.cardBg,
               }}
               onClick={() => setSelectedBlog(blogs[0])}
             >
-              {/* Image */}
-              <div className={`relative h-56 md:h-64 bg-gradient-to-br ${blogs[0].gradient} overflow-hidden`}>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-white/20 text-6xl font-black">01</span>
-                </div>
+              {/* Real Image */}
+              <div className="relative h-56 md:h-72 overflow-hidden img-zoom-container">
+                <Image
+                  src={blogs[0].image}
+                  alt={blogs[0].title}
+                  fill
+                  unoptimized
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
                 <div className="absolute top-4 left-4">
                   <span
                     className="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold text-white rounded-full"
@@ -121,7 +130,7 @@ export default function BlogSection() {
                   <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{blogs[0].readTime}</span>
                 </div>
                 <h3
-                  className="text-xl mb-2 text-gray-900 group-hover:translate-x-1 transition-transform"
+                  className="text-xl mb-2 text-gray-900 group-hover:translate-x-1 transition-transform duration-300 line-clamp-2"
                   style={{ fontWeight: 'var(--design-heading-weight, 700)' }}
                 >
                   {blogs[0].title}
@@ -130,7 +139,7 @@ export default function BlogSection() {
                   {blogs[0].excerpt}
                 </p>
                 <span
-                  className="inline-flex items-center gap-1 text-sm font-semibold group-hover:gap-2 transition-all"
+                  className="inline-flex items-center gap-1 text-sm font-semibold transition-all duration-300 group-hover:gap-2"
                   style={{ color: colorTheme.accent }}
                 >
                   Read More <ArrowRight className="w-4 h-4" />
@@ -148,18 +157,27 @@ export default function BlogSection() {
                 style={{ transitionDelay: `${(i + 1) * 150}ms` }}
               >
                 <div
-                  className="group cursor-pointer flex gap-4 p-4 transition-all duration-300 hover:-translate-x-1"
+                  className="group cursor-pointer flex gap-4 p-4 transition-all duration-300 hover:-translate-y-0.5"
                   style={{
                     borderRadius: designTheme.cardRadius,
                     boxShadow: designTheme.cardShadow,
                     border: designTheme.cardBorder,
                     background: designTheme.cardBg,
                   }}
+                  onMouseEnter={(e) => { e.currentTarget.style.boxShadow = designTheme.cardHoverShadow; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.boxShadow = designTheme.cardShadow; }}
                   onClick={() => setSelectedBlog(blog)}
                 >
                   {/* Thumbnail */}
-                  <div className={`relative w-24 h-24 shrink-0 bg-gradient-to-br ${blog.gradient} rounded-lg overflow-hidden flex items-center justify-center`}>
-                    <span className="text-white/20 text-2xl font-black">0{i + 2}</span>
+                  <div className="relative w-28 h-28 shrink-0 overflow-hidden img-zoom-container rounded-lg">
+                    <Image
+                      src={blog.image}
+                      alt={blog.title}
+                      fill
+                      unoptimized
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      sizes="112px"
+                    />
                   </div>
                   {/* Content */}
                   <div className="flex-1 min-w-0">
@@ -172,7 +190,7 @@ export default function BlogSection() {
                       </span>
                       <span>{blog.readTime}</span>
                     </div>
-                    <h4 className="text-sm font-bold text-gray-900 mb-1 line-clamp-2 group-hover:translate-x-0.5 transition-transform">
+                    <h4 className="text-sm font-bold text-gray-900 mb-1 line-clamp-2 group-hover:translate-x-0.5 transition-transform duration-300">
                       {blog.title}
                     </h4>
                     <p className="text-xs text-gray-500 line-clamp-2">{blog.excerpt}</p>
@@ -187,7 +205,7 @@ export default function BlogSection() {
         <div className={`text-center mt-10 transition-all duration-700 ${visible ? 'opacity-100' : 'opacity-0'}`}>
           <a
             href="#"
-            className="inline-flex items-center gap-2 px-6 py-3 text-white font-semibold transition-all hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 py-3 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
             style={{
               background: colorTheme.accent,
               borderRadius: designTheme.buttonRadius,
@@ -201,7 +219,7 @@ export default function BlogSection() {
       {/* Blog Popup Modal */}
       {selectedBlog && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-fade-in"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 modal-backdrop"
           onClick={() => setSelectedBlog(null)}
         >
           {/* Overlay */}
@@ -209,7 +227,7 @@ export default function BlogSection() {
 
           {/* Modal */}
           <div
-            className="relative z-10 w-full max-w-3xl max-h-[85vh] overflow-y-auto animate-slide-up"
+            className="relative z-10 w-full max-w-3xl max-h-[85vh] overflow-y-auto modal-content"
             style={{
               borderRadius: designTheme.cardRadius,
               background: designTheme.cardBg,
@@ -220,18 +238,24 @@ export default function BlogSection() {
             {/* Close button */}
             <button
               onClick={() => setSelectedBlog(null)}
-              className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/90 hover:bg-white shadow-lg transition-all"
+              className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/90 hover:bg-white shadow-lg transition-all duration-300 hover:scale-110"
               aria-label="Close blog"
             >
               <X className="w-5 h-5 text-gray-700" />
             </button>
 
             {/* Header Image */}
-            <div className={`relative h-48 md:h-64 bg-gradient-to-br ${selectedBlog.gradient}`}>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white/10 text-8xl font-black">BLOG</span>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/50 to-transparent">
+            <div className="relative h-56 md:h-72 overflow-hidden">
+              <Image
+                src={selectedBlog.image}
+                alt={selectedBlog.title}
+                fill
+                unoptimized
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 768px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
                 <span
                   className="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold text-white rounded-full mb-2"
                   style={{ background: colorTheme.accent }}

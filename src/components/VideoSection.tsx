@@ -1,8 +1,15 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { useTheme } from './ThemeProvider';
 import { Play, X } from 'lucide-react';
+
+const CDN = 'https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/';
+
+const YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/YUFlLe4N3rA?autoplay=1&rel=0';
+const VIDEO_THUMBNAIL = CDN + 'wp-content/uploads/2020/08/ez-banner-slide-1171x506.jpg';
+const VIDEO_TITLE = 'Tostem India: Leading Aluminium Windows, Doors Manufacturer & Supplier';
 
 export default function VideoSection() {
   const { colorTheme, designTheme } = useTheme();
@@ -37,83 +44,76 @@ export default function VideoSection() {
             See Our Products in Action
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Watch how our premium aluminium windows and doors are manufactured and installed.
+            Discover how TOSTEM&apos;s premium aluminium windows and doors are manufactured with Japanese precision and installed across India.
           </p>
         </div>
 
         {/* Video Player */}
         <div className={`transition-all duration-700 ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <div
-            className="relative aspect-video bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden cursor-pointer group"
+            className="relative aspect-video overflow-hidden group"
             style={{
               borderRadius: designTheme.cardRadius,
               boxShadow: designTheme.cardHoverShadow,
             }}
-            onClick={() => setPlaying(!playing)}
           >
             {!playing ? (
               <>
-                {/* Decorative elements */}
-                <div className="absolute inset-0 opacity-20">
-                  <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full" style={{ background: colorTheme.accent + '30' }} />
-                  <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full" style={{ background: colorTheme.accent + '20' }} />
-                </div>
-
-                {/* Window frame illustration */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-64 h-48 border-4 rounded-sm" style={{ borderColor: 'rgba(255,255,255,0.2)' }}>
-                    <div className="w-full h-1/2 border-b-2" style={{ borderColor: 'rgba(255,255,255,0.15)' }} />
-                    <div className="absolute top-0 left-1/2 w-0.5 h-full" style={{ background: 'rgba(255,255,255,0.15)' }} />
-                  </div>
-                </div>
+                {/* Thumbnail image */}
+                <Image
+                  src={VIDEO_THUMBNAIL}
+                  alt={VIDEO_TITLE}
+                  fill
+                  unoptimized
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 1024px"
+                  priority
+                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-500" />
 
                 {/* Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center z-10">
-                  <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center transition-all group-hover:scale-110 group-hover:shadow-2xl"
+                  <button
+                    onClick={() => setPlaying(true)}
+                    className="w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl cursor-pointer"
                     style={{
                       background: colorTheme.accent,
                       boxShadow: `0 0 40px ${colorTheme.accent}60`,
                     }}
+                    aria-label="Play video"
                   >
-                    <Play className="w-8 h-8 text-white ml-1" />
-                  </div>
+                    <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1" />
+                  </button>
                 </div>
 
                 {/* Title overlay */}
                 <div className="absolute bottom-6 left-6 z-10">
-                  <p className="text-white font-bold text-lg">TOSTEM Manufacturing Process</p>
-                  <p className="text-white/60 text-sm">2:45 min</p>
+                  <p className="text-white font-bold text-lg md:text-xl">{VIDEO_TITLE}</p>
+                  <p className="text-white/60 text-sm mt-1">Click to play</p>
                 </div>
+
+                {/* Accent bar at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: colorTheme.accent }} />
               </>
             ) : (
-              <>
-                {/* Simulated playing state */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div
-                      className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4"
-                      style={{ background: colorTheme.accent + '30' }}
-                    >
-                      <div className="flex gap-2">
-                        <div className="w-2 h-8 bg-white rounded-full animate-pulse" />
-                        <div className="w-2 h-12 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
-                        <div className="w-2 h-6 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
-                        <div className="w-2 h-10 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.6s' }} />
-                        <div className="w-2 h-7 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.8s' }} />
-                      </div>
-                    </div>
-                    <p className="text-white/60 text-sm">Video playing...</p>
-                  </div>
-                </div>
+              <div className="relative w-full h-full">
+                <iframe
+                  src={YOUTUBE_EMBED_URL}
+                  title={VIDEO_TITLE}
+                  className="absolute inset-0 w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{ borderRadius: designTheme.cardRadius }}
+                />
                 <button
-                  className="absolute top-4 right-4 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all z-10"
-                  onClick={(e) => { e.stopPropagation(); setPlaying(false); }}
+                  className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all duration-300 hover:scale-110"
+                  onClick={() => setPlaying(false)}
                   aria-label="Close video"
                 >
                   <X className="w-5 h-5" />
                 </button>
-              </>
+              </div>
             )}
           </div>
         </div>

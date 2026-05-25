@@ -1,0 +1,506 @@
+{
+  "page_title": "Leading Aluminium Windows and Doors Manufacturer, Supplier Company | Tostem India",
+  "page_description": "Tostem India is the world's leading manufacturer and supplier of aluminium windows and doors in India. Browse our premium Japanese products for durable, energy-efficient solutions for your modern windows and doors. Get a quote today!",
+  "site_url": "https://www.tostemindia.com/",
+  "cdn_base": "https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/",
+  "logo": {
+    "header_logo": "https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/wp-content/uploads/2024/07/logo-tostemindia.png",
+    "footer_logo": "https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/wp-content/uploads/2020/07/logo-ftr-130x25.png",
+    "footer_white_logo": "https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/wp-content/themes/tostem/images/white-logo.png",
+    "favicon": "https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/wp-content/themes/tostem/images/favicon.png",
+    "schema_logo": "wp-content/uploads/2020/07/logo.png"
+  },
+  "navigation_menu": {
+    "About Tostem": {
+      "link": "javascript:void(0);",
+      "submenu": {
+        "About Tostem": "about-tostem.html",
+        "Leader's Message": "directors-message.html",
+        "Our Purpose And Behaviour": "our-purpose-and-behaviour.html",
+        "Lixil Window System": "lixil-window-system.html",
+        "Awards": "awards.html"
+      }
+    },
+    "Why Tostem": {
+      "link": "javascript:void(0);",
+      "submenu": {
+        "Total Housing Solutions": "total-housing-solutions.html",
+        "Japanese Innovation": "japanese-innovation.html",
+        "Pre Engineered System Windows": "pre-engineered-system-windows.html",
+        "Quality Assurance and Testing": "quality-assurance-and-services.html",
+        "TOSTEM Product Performance": "soundproof-window-door-performance.html",
+        "Surface & Colour Protection": "anodized-aluminum-windows-surface-colour-protection.html",
+        "Anodised Aluminium Window": "anodised-aluminium-windows-doors-colour.html",
+        "Sound Insulated Doors and Windows": "soundproof-insulated-doors-and-windows.html"
+      }
+    },
+    "Our Product": {
+      "link": "javascript:void(0);",
+      "submenu": {
+        "Aluminium Doors": {
+          "link": "aluminium-doors-design-prices.html",
+          "designs": {
+            "Sliding Doors": "aluminium-sliding-doors.html",
+            "Casement Doors": "aluminium-casement-doors.html",
+            "French Doors": "aluminium-french-doors.html",
+            "Folding (Bi Fold) Doors": "aluminium-bi-folding-doors.html",
+            "Corner Slider Door": "aluminium-corner-slider-door.html",
+            "Slide and Fold Doors": "designs/aluminium-slide-fold-doors/",
+            "Ventilation Doors": "ventilation-doors.html"
+          },
+          "series": {
+            "Grants - Break The Norm With Fine Line Of Design & Function": "grants-windows-doors-series.html",
+            "ATIS - Framing The Beauty Of Living": "atis-windows-doors-series.html",
+            "We Plus - Performance Oriented Design": "we-plus-windows-doors-series.html",
+            "We 70 - Design Meets Performance & Reliability": "we-70-windows-doors-series.html"
+          }
+        },
+        "Aluminium Windows": {
+          "link": "aluminium-windows-design-prices.html",
+          "designs": {
+            "Sliding Windows": "aluminium-sliding-windows-designs.html",
+            "Casement Windows": "aluminium-casement-windows.html",
+            "Awning Windows": "aluminium-hung-awning-windows.html",
+            "Fixed Windows": "aluminium-fixed-window.html",
+            "Glass To Glass Corner Windows": "aluminium-glass-to-glass-corner-window.html",
+            "French Windows": "aluminium-french-windows.html",
+            "Tilt and Slide Windows": "aluminium-tilt-slide-windows.html",
+            "Slit Windows": "aluminium-slit-windows.html",
+            "Vertical Sliding Windows": "aluminium-vertical-sliding-windows.html"
+          },
+          "series": {
+            "Grants - Break The Norm With Fine Line Of Design & Function": "grants-windows-doors-series.html",
+            "ATIS - Framing The Beauty Of Living": "atis-windows-doors-series.html",
+            "We Plus - Performance Oriented Design": "we-plus-windows-doors-series.html",
+            "We 70 - Design Meets Performance & Reliability": "we-70-windows-doors-series.html"
+          }
+        },
+        "Steel Entrance Doors": {
+          "link": "steel-entrance-doors.html",
+          "designs": {
+            "GIESTA Design Simulation": "frame_design_selection.html"
+          },
+          "series": {
+            "Giesta Doors": "giesta-doors.html",
+            "Giesta with Ventilation": "giesta-ventilation-doors.html"
+          }
+        },
+        "Airflow System": {
+          "link": "airflow-system.html",
+          "designs": {
+            "GIESTA Airflow": "giesta-ventilation-doors.html",
+            "Ventilation Doors": "ventilation-doors.html",
+            "Ventilation Slot": "ventilation-slots.html",
+            "Aluminium Louvers": "aluminum-louver.html",
+            "Glass Louvers": "glass-louver.html"
+          },
+          "series": {
+            "GIESTA Simulation Airflow": "main.html?id=OUT-A01-10-CB-A1A-W035-T027-STANDARD-SC0-NON&lang=ENG",
+            "We 70": "we-70-windows-doors-series.html"
+          }
+        },
+        "Façades": {
+          "link": "aluminium-building-architectural-facades.html",
+          "designs": {
+            "Curtain Wall Facades": "facade-curtain-wall.html",
+            "Store Front Facades": "facade-store-front.html"
+          }
+        },
+        "Interior": {
+          "link": "aluminium-interior-door.html",
+          "designs": {
+            "Hanging Doors": "hanging-door.html",
+            "Swing Doors": "swing-door.html",
+            "Fixed Divider": "fixed-divider.html"
+          }
+        }
+      }
+    },
+    "driving Experience": {
+      "link": "javascript:void(0);",
+      "submenu": {
+        "E-catalogue": "e-catalogue.html",
+        "Modern Window & Door Design": "modern-window-door-design.html",
+        "GIESTA Design Simulation": "frame_design_selection.html",
+        "Gallery": "gallery.html"
+      }
+    },
+    "TADA": {
+      "link": "javascript:void(0);",
+      "submenu": {
+        "TADA-2025": "tada-2025.html",
+        "TADA-2024": "tada-2024.html",
+        "TADA-2023": "tada-2023.html"
+      }
+    },
+    "Knowledge Experience": {
+      "link": "blog.html",
+      "submenu": {
+        "Pre Engineered System Windows": "what-is-pre-engineered-system-window/",
+        "Planning a System Window": "planning-a-system-window/",
+        "System Aluminum Windows": "system-aluminum-windows/",
+        "Blog": "blog.html",
+        "Glossary": "glossary/",
+        "Testimonials": "testimonials/"
+      }
+    },
+    "Reach Us": {
+      "link": "javascript:void(0);",
+      "submenu": {
+        "TOSTEM Offices": "contact.html",
+        "Find a TOSTEM Studio": "https://studio.tostemindia.com/"
+      }
+    }
+  },
+  "hero_banner_slider": {
+    "images": [
+      "https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/wp-content/uploads/2020/08/ez-banner-slide-1171x506.jpg",
+      "https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/wp-content/uploads/2025/08/Header-Image_IN-16-1171x506.jpg",
+      "https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/wp-content/uploads/2025/07/Vive-32-lowres-2-1171x506.jpg"
+    ],
+    "videos": [
+      "https://www.tostemindia.com/wp-content/themes/tostem/video/WebsiteBanner_Grants.mp4",
+      "https://www.tostemindia.com/wp-content/themes/tostem/video/MobileVersion_Grants.mp4"
+    ]
+  },
+  "usp_features": {
+    "section_heading": "What Makes Tostem a Leading Brand",
+    "usp_images": [
+      {
+        "image": "TostemTexguard-416x647.jpg",
+        "label": "Surface & Colour Protection (Tostem Texguard)"
+      },
+      {
+        "image": "Red-dot-125x127.jpeg",
+        "label": "Red Dot Design Award"
+      },
+      {
+        "image": "Door-Loock-122x124.jpg",
+        "label": "Door Lock Quality"
+      },
+      {
+        "image": "pre-engineered-173x130.jpeg",
+        "label": "Pre-Engineered System Windows"
+      }
+    ],
+    "product_category_images": {
+      "Aluminium Doors": "Aluminum-Doors-Home-Office.jpg",
+      "Aluminium Windows": "Aluminium-Windows-Home-Office-1.jpg",
+      "Warangkana House": "Warangkana-House-57.jpg"
+    }
+  },
+  "product_categories_homepage": [
+    {
+      "name": "Aluminium Doors",
+      "link": "aluminium-doors-design-prices.html",
+      "image": "Aluminum-Doors-Home-Office.jpg"
+    },
+    {
+      "name": "Aluminium Windows",
+      "link": "aluminium-windows-design-prices.html",
+      "image": "Aluminium-Windows-Home-Office-1.jpg"
+    },
+    {
+      "name": "Steel Entrance Doors",
+      "link": "steel-entrance-doors.html"
+    },
+    {
+      "name": "Façades",
+      "link": "aluminium-building-architectural-facades.html"
+    },
+    {
+      "name": "Interior",
+      "link": "aluminium-interior-door.html"
+    },
+    {
+      "name": "Airflow System",
+      "link": "airflow-system.html"
+    }
+  ],
+  "series_information": [
+    {
+      "name": "Grants",
+      "tagline": "Break The Norm With Fine Line Of Design & Function",
+      "link": "grants-windows-doors-series.html"
+    },
+    {
+      "name": "ATIS",
+      "tagline": "Framing The Beauty Of Living",
+      "link": "atis-windows-doors-series.html"
+    },
+    {
+      "name": "We Plus",
+      "tagline": "Performance Oriented Design",
+      "link": "we-plus-windows-doors-series.html"
+    },
+    {
+      "name": "We 70",
+      "tagline": "Design Meets Performance & Reliability",
+      "link": "we-70-windows-doors-series.html"
+    },
+    {
+      "name": "Giesta",
+      "tagline": "Steel Entrance Doors",
+      "link": "giesta-doors.html"
+    }
+  ],
+  "stats_numbers": [
+    {
+      "value": "100",
+      "unit": "years",
+      "context": "LIXIL group heritage / experience"
+    },
+    {
+      "value": "40",
+      "unit": "years",
+      "context": "TOSTEM experience"
+    }
+  ],
+  "gallery_images": [
+    "https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/wp-content/uploads/2020/07/home-gallery-img-1-748x441.jpg",
+    "https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/wp-content/uploads/2020/07/home-gallery-img-2-461x629.jpg",
+    "https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/wp-content/uploads/2020/07/home-gallery-img-3.jpg",
+    "https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/wp-content/uploads/2020/07/home-gallery-img-4-869x484.jpg"
+  ],
+  "project_gallery_images": [
+    "DSC03783-1.jpg",
+    "d-Natures-Island-58.jpg",
+    "DJI_0528-1.jpg",
+    "De-Vielle_36.jpg",
+    "Copy-of-12-1.jpg",
+    "Copy-of-12.jpg",
+    "Copy-of-11.jpg",
+    "Copy-of-08.jpg",
+    "Copy-of-05.jpg",
+    "Copy-of-4.jpg",
+    "c-Natures-Island-93.jpg",
+    "Chantra-Khiri-20.jpg",
+    "Chantra-Khiri-13.jpg",
+    "Baan-Nawat-43.jpg",
+    "Baan-Nawat-35.jpg",
+    "Baan-Nawat-29.jpg",
+    "AP-Palazzo-70.jpg",
+    "AP-Palazzo-04.jpg",
+    "10-4.jpg",
+    "09-1.jpg",
+    "05-Central-Dry-Court-18.jpg",
+    "1-19.jpg",
+    "Tostem-Chevalife_10.jpg",
+    "The-Connect-13-lowres.jpg",
+    "Tara-Keree-43.jpg",
+    "Tara-Keree-07.jpg",
+    "SJP1631-Enhanced-NR-Edit.jpg",
+    "SJP1622-Enhanced-NR-Edit.jpg",
+    "SJP1544-Edit.jpg",
+    "SJP1490-Edit.jpg",
+    "SJP1295Edited-Edit.jpg",
+    "Sarin-Vista-24-lowres.jpg",
+    "Sarin-Residence-24-lowres.jpg",
+    "Plover-13.jpg",
+    "Oxygen_54.jpg",
+    "Oxygen_51.jpg",
+    "Nirvana-Beyond-03-lowres.jpg",
+    "Nawathani-062.jpg",
+    "Formal-living-to-landscape.jpg",
+    "Exteriors-23.jpg",
+    "Exion-11.jpg",
+    "DSC_7850-JPG.jpg",
+    "DSC04277.jpg"
+  ],
+  "blog_posts": [
+    {
+      "title": "Different Stained Glass Designs for Doors and Windows",
+      "image": "Different-Stained-Glass-Designs-for-Doors-and-Windows.jpg",
+      "link": "blog.html (referenced)"
+    },
+    {
+      "title": "Plywood Almirah Design Ideas: Modern Storage Solutions with Window Integration",
+      "image": "Plywood-Almirah-banner.jpg",
+      "link": "blog.html (referenced)"
+    },
+    {
+      "title": "French Doors vs Sliding Doors for Balcony: Which is a better option?",
+      "image": "French-Doors-627x317.jpg",
+      "link": "blog.htmlfrench-doors-vs-sliding-doors-for-balcony-which-is-a-better-option/"
+    },
+    {
+      "title": "Amazing Aluminium Door Designs to Transform Your Home",
+      "image": "Amazing-Aluminium-Door-422x329.jpg",
+      "link": "blog.htmlamazing-aluminium-door-designs-to-transform-your-home/"
+    }
+  ],
+  "testimonials": {
+    "section_heading": "Testimonials",
+    "description": "We have a wealth of happy customers who can't help but shout about our excellent services.",
+    "video_testimonials": [
+      "https://www.tostemindia.com/wp-content/uploads/2024/09/Customer-Testimonial-Mr.-Amarnath-Deltra-Global.mp4",
+      "https://www.tostemindia.com/wp-content/uploads/2024/09/Customer-Testimonial-Mr.-Dheeraj-Hyderabad-Deltra-Global.mp4",
+      "https://www.tostemindia.com/wp-content/uploads/2024/09/Real-Homes-Real-Stories-Deltra-Aluminum-Doors-Windows.mp4"
+    ],
+    "view_all_link": "testimonials/"
+  },
+  "youtube_urls": [
+    {
+      "url": "https://www.youtube.com/channel/UC406nt_doDjLLCnF9FqCsGg",
+      "type": "channel"
+    },
+    {
+      "url": "https://www.youtube.com/embed/YUFlLe4N3rA",
+      "type": "embed"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCdyM03obN4lmnsI9X1gEQWA?view_as=subscriber",
+      "type": "channel"
+    }
+  ],
+  "video_object_schema": {
+    "name": "Tostem India: Leading Aluminium Windows, Doors Manufacturer & Supplier",
+    "description": "Tostem India is the leading brand celebrated for its aluminium doors, Slide and fold doors, aluminium bi fold door, house door, french doors and windows, aluminium windows, french windows, casement windows, latest window designs, house doors and windows, sash windows, entrance doors, and other building materials in many countries around the globe. With over 50 years of experience in developing innovative products...",
+    "thumbnailUrl": "wp-content/uploads/2020/10/slide-b-768x527-1-768x527.jpg",
+    "uploadDate": "2020-03-31",
+    "duration": "PT2M6S",
+    "contentUrl": "https://www.youtube.com/channel/UC406nt_doDjLLCnF9FqCsGg",
+    "embedUrl": "https://www.youtube.com/embed/YUFlLe4N3rA"
+  },
+  "partner_logos": {
+    "LIXIL group": [
+      {
+        "name": "American Standard",
+        "image": "american-s-sm.png",
+        "link": "https://www.americanstandard.in/"
+      },
+      {
+        "name": "GROHE",
+        "image": "grohe-sm.png",
+        "link": "https://www.grohe.com/en/corporate/homepage.html"
+      },
+      {
+        "name": "TOSTEM",
+        "image": "tostem-sm.png",
+        "link": "https://www.tostem.com/en/"
+      },
+      {
+        "name": "INAX",
+        "image": "inax-sm.png",
+        "link": "https://www.inax.com/"
+      },
+      {
+        "name": "LIXIL",
+        "image": "lixil-sm.png",
+        "link": "https://www.lixil.com/"
+      }
+    ]
+  },
+  "footer": {
+    "company": "Tostem India, LIXIL Window Systems Private Limited",
+    "addresses": [
+      "Plot No.75, Sector 8, IMT Manesar, Gurgaon, Haryana 122050",
+      "Plot No. F. S. NO. 341, CTS NO. 1272, 29, Jagat Vidya Marg, MIG Colony, Bandra East, Mumbai, Maharashtra 400051"
+    ],
+    "phone": "18001036855 (Toll Free)",
+    "phone_alt": "+91 0124 4350000",
+    "email": "support.lwsindia@lixil.com",
+    "social_links": {
+      "Facebook": "https://www.facebook.com/Tostem-India-102425725097107",
+      "YouTube": "https://www.youtube.com/channel/UCdyM03obN4lmnsI9X1gEQWA?view_as=subscriber",
+      "Instagram": "https://www.instagram.com/tostem_india/",
+      "LinkedIn": "https://www.linkedin.com/company/tostem-india/",
+      "Pinterest": "https://www.pinterest.com/tostem_india/"
+    },
+    "footer_links": {
+      "Get Quotation": "get-quotation/",
+      "Testimonials": "testimonials/",
+      "Career": "career/",
+      "Knowledge Centre": "blog.html",
+      "Awards": "awards.html",
+      "Gallery": "gallery.html",
+      "News Posts": "?page_id=3953",
+      "Glossary": "glossary/",
+      "Privacy Policy": "privacy-policy/",
+      "CSR Policy": "csr-policy/",
+      "Catalogue": "e-catalogue.html",
+      "Contact Us": "get-quotation/"
+    },
+    "website_design_credit": "https://www.techmagnate.com/website-designing-development.html"
+  },
+  "colour_swatches": {
+    "note": "No inline color swatch data found on homepage. Colour/surface options are on product detail pages. Background colors detected: #54585a (dark grey header), #f5f5f5 (light bg), rgb(97,162,41) (green accent). Surface & Colour Protection page: anodized-aluminum-windows-surface-colour-protection.html"
+  },
+  "all_nitro_lazy_src_images_count": 115,
+  "cta_buttons": [
+    {
+      "text": "Know More",
+      "link": "soundproof-window-door-performance"
+    },
+    {
+      "text": "Know More",
+      "link": "aluminium-doors-design-prices.html"
+    },
+    {
+      "text": "Know More",
+      "link": "aluminium-windows-design-prices.html"
+    },
+    {
+      "text": "Know More",
+      "link": "steel-entrance-doors.html"
+    },
+    {
+      "text": "Know More",
+      "link": "aluminium-building-architectural-facades.html"
+    },
+    {
+      "text": "Know More",
+      "link": "aluminium-interior-door.html"
+    },
+    {
+      "text": "Know More",
+      "link": "airflow-system.html"
+    },
+    {
+      "text": "View all testmonials",
+      "link": "testimonials/"
+    },
+    {
+      "text": "View Gallery",
+      "link": "gallery.html"
+    },
+    {
+      "text": "View All Blogs",
+      "link": "blog.html"
+    },
+    {
+      "text": "Download Brochure",
+      "link": "javascript:void(0)"
+    },
+    {
+      "text": "Enquire Now",
+      "link": "#"
+    },
+    {
+      "text": "Call Us",
+      "link": "tel:18001036855"
+    }
+  ],
+  "organization_schema": {
+    "name": "Tostem India",
+    "type": "Organization",
+    "address": {
+      "locality": "Gurgaon",
+      "region": "Haryana",
+      "postalCode": "122050",
+      "streetAddress": "Tostem India, LIXIL Window Systems Private Limited, Plot No.75, Sector 8, IMT Manesar"
+    },
+    "telephone": "+91 0124 4350000",
+    "email": "support.lwsindia@lixil.com",
+    "facebook_author": "https://www.facebook.com/arpan.wasan"
+  },
+  "tracking_ids": {
+    "google_analytics": "UA-185756614-1",
+    "google_analytics_v4": "G-2H0J2LRPXT",
+    "google_ads": "AW-456728021",
+    "facebook_pixel": "599990644473471",
+    "hubspot_portal": "24400113",
+    "google_site_verification": "M583SmrFT8m89Z2bTg-UXly8Q-sZ-ZQjlDrBN4-1MuY",
+    "facebook_domain_verification": "15sdf38iuzb13se3usf1pmzxhvae4k"
+  }
+}

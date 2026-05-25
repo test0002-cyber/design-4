@@ -26,16 +26,21 @@ export default function CTABand() {
         style={{ background: colorTheme.gradient }}
       />
 
-      {/* Decorative elements */}
+      {/* Parallax animated decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10"
+          className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10 animate-float"
           style={{ background: colorTheme.accentLight }}
         />
         <div
           className="absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full opacity-5"
           style={{ background: 'white' }}
         />
+        <div
+          className="absolute top-1/4 right-1/4 w-32 h-32 rounded-full opacity-5 animate-float"
+          style={{ background: 'white', animationDelay: '1.5s' }}
+        />
+        {/* Dot pattern */}
         <svg className="absolute inset-0 w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg">
           <pattern id="cta-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
             <circle cx="20" cy="20" r="1.5" fill="white" />
@@ -46,7 +51,7 @@ export default function CTABand() {
 
       <div className={`max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
         <div className="flex justify-center mb-6">
-          <div className="w-14 h-14 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm">
+          <div className="w-14 h-14 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm animate-pulse-soft">
             <Sparkles className="w-7 h-7 text-white" />
           </div>
         </div>
@@ -63,18 +68,18 @@ export default function CTABand() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="#contact"
-            className="px-8 py-4 text-lg font-bold text-white transition-all hover:scale-105 flex items-center gap-2 animate-pulse-soft"
+            className="group px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 flex items-center gap-2"
             style={{
               background: colorTheme.accent,
               borderRadius: designTheme.buttonRadius,
               boxShadow: `0 8px 30px ${colorTheme.accent}50`,
             }}
           >
-            Get a Quote <ArrowRight className="w-5 h-5" />
+            Get a Quote <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
           <a
             href="#"
-            className="px-8 py-4 text-lg font-semibold text-white border-2 border-white/30 hover:border-white/60 transition-all hover:scale-105 flex items-center gap-2"
+            className="px-8 py-4 text-lg font-semibold text-white border-2 border-white/30 hover:border-white/60 transition-all duration-300 hover:scale-105 flex items-center gap-2"
             style={{ borderRadius: designTheme.buttonRadius }}
           >
             <Download className="w-5 h-5" /> Download Brochure

@@ -2,13 +2,13 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useTheme } from './ThemeProvider';
-import { Award, Palette, MapPin, Layers } from 'lucide-react';
+import { Award, Palette, MapPin, Clock } from 'lucide-react';
 
 const stats = [
-  { value: 25, suffix: '+', label: 'Years of Japanese Legacy', icon: Award },
-  { value: 100, suffix: '+', label: 'Colour Options', icon: Palette },
-  { value: 860, suffix: '+', label: 'Cities Served', icon: MapPin },
-  { value: 50, suffix: '+', label: 'Product Series', icon: Layers },
+  { value: 100, suffix: '+', label: 'Years LIXIL Group Heritage', icon: Clock, description: 'A century of global expertise in building products' },
+  { value: 40, suffix: '+', label: 'Years TOSTEM Experience', icon: Award, description: 'Decades of Japanese engineering excellence' },
+  { value: 860, suffix: '+', label: 'Cities Served', icon: MapPin, description: 'Pan-India coverage reaching every corner' },
+  { value: 100, suffix: '+', label: 'Colour Options', icon: Palette, description: 'Premium finishes to match every aesthetic' },
 ];
 
 function AnimatedCounter({ target, suffix }: { target: number; suffix: string }) {
@@ -30,7 +30,7 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
               clearInterval(timer);
             }
             setCount(current);
-          }, 30);
+          }, 25);
         }
       },
       { threshold: 0.5 }
@@ -40,7 +40,7 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
   }, [target]);
 
   return (
-    <span ref={ref}>
+    <span ref={ref} className="tabular-nums">
       {count}{suffix}
     </span>
   );
@@ -68,10 +68,19 @@ export default function StatsBand() {
       className="relative py-16 md:py-20 overflow-hidden"
       style={{ background: colorTheme.gradient }}
     >
-      {/* Decorative overlay */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-full h-px bg-white" />
-        <div className="absolute bottom-0 left-0 w-full h-px bg-white" />
+      {/* Animated decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px bg-white opacity-20" />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-white opacity-20" />
+        {/* Floating circles */}
+        <div
+          className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-10 animate-float"
+          style={{ background: colorTheme.accentLight }}
+        />
+        <div
+          className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full opacity-10"
+          style={{ background: 'white', animationDelay: '1s' }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -86,7 +95,7 @@ export default function StatsBand() {
               >
                 <div className="flex justify-center mb-3">
                   <div
-                    className="w-14 h-14 rounded-xl flex items-center justify-center"
+                    className="w-14 h-14 rounded-xl flex items-center justify-center transition-transform duration-500 hover:scale-110"
                     style={{ background: 'rgba(255,255,255,0.15)', borderRadius: designTheme.cardRadius }}
                   >
                     <Icon className="w-7 h-7 text-white" />
@@ -95,7 +104,8 @@ export default function StatsBand() {
                 <div className="text-3xl md:text-4xl font-black text-white mb-1">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 </div>
-                <div className="text-sm text-white/70 font-medium">{stat.label}</div>
+                <div className="text-sm text-white/80 font-medium mb-1">{stat.label}</div>
+                <div className="text-xs text-white/50 hidden md:block">{stat.description}</div>
               </div>
             );
           })}

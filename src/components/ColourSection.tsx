@@ -1,8 +1,11 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { useTheme } from './ThemeProvider';
 import { Palette, Check } from 'lucide-react';
+
+const CDN = 'https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/';
 
 const colourOptions = [
   { name: 'Anthracite Grey', hex: '#383838' },
@@ -81,16 +84,24 @@ export default function ColourSection() {
                 border: designTheme.cardBorder,
               }}
             >
-              {/* Window frame preview */}
+              {/* Window frame preview with real image */}
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <Palette className="w-5 h-5" style={{ color: colorTheme.accent }} />
                   <span className="text-sm font-semibold text-gray-700">Colour Preview</span>
                 </div>
 
-                {/* Simulated window frame */}
-                <div className="relative bg-gradient-to-br from-blue-200 to-blue-400 h-52 mb-4 overflow-hidden">
-                  {/* Window frame */}
+                {/* Simulated window frame with background image */}
+                <div className="relative bg-gradient-to-br from-sky-200 to-sky-400 h-52 mb-4 overflow-hidden">
+                  <Image
+                    src={CDN + 'wp-content/uploads/2020/08/ez-banner-slide-1171x506.jpg'}
+                    alt="Colour preview background"
+                    fill
+                    unoptimized
+                    className="object-cover opacity-30"
+                    sizes="33vw"
+                  />
+                  {/* Window frame overlay */}
                   <div
                     className="absolute inset-2 border-4 transition-colors duration-500"
                     style={{ borderColor: selectedColour.hex }}
@@ -134,7 +145,7 @@ export default function ColourSection() {
                   <button
                     key={colour.name}
                     onClick={() => setSelectedColour(colour)}
-                    className="group relative flex flex-col items-center gap-2 p-2 transition-all hover:scale-110"
+                    className="group relative flex flex-col items-center gap-2 p-2 transition-all duration-300 hover:scale-110"
                     title={colour.name}
                   >
                     <div

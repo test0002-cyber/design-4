@@ -1,24 +1,36 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import Image from 'next/image';
 import { useTheme } from './ThemeProvider';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 
+const CDN = 'https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/';
+
 const slides = [
   {
-    title: 'Premium Aluminium Windows & Doors',
-    subtitle: 'Japanese technology meets Indian craftsmanship',
-    gradient: 'from-[var(--theme-primary)] via-[var(--theme-primary-light)] to-[var(--theme-primary-dark)]',
+    title: 'Grants Series',
+    subtitle: 'Break The Norm',
+    description: 'Fine line of design and function — redefining aluminium windows and doors with Japanese precision engineering.',
+    image: CDN + 'wp-content/uploads/2020/08/ez-banner-slide-1171x506.jpg',
+    video: 'https://www.tostemindia.com/wp-content/themes/tostem/video/WebsiteBanner_Grants.mp4',
+    cta: 'Explore Grants',
   },
   {
-    title: 'Energy Efficient Solutions',
-    subtitle: 'Thermal break technology for all seasons',
-    gradient: 'from-[var(--theme-primary-dark)] via-[var(--theme-primary)] to-[var(--theme-primary-light)]',
+    title: 'IN-16 Series',
+    subtitle: 'Japanese Precision',
+    description: 'Experience the next generation of slim-profile aluminium windows — crafted with meticulous Japanese engineering for modern Indian homes.',
+    image: CDN + 'wp-content/uploads/2025/08/Header-Image_IN-16-1171x506.jpg',
+    video: null,
+    cta: 'Discover IN-16',
   },
   {
-    title: '100+ Colour Options',
-    subtitle: 'Match every aesthetic with our premium finishes',
-    gradient: 'from-[var(--theme-primary-light)] via-[var(--theme-primary-dark)] to-[var(--theme-primary)]',
+    title: 'Vive Series',
+    subtitle: 'Premium Living',
+    description: 'Elevate your living spaces with our premium Vive Series — where aesthetic elegance meets outstanding performance.',
+    image: CDN + 'wp-content/uploads/2025/07/Vive-32-lowres-2-1171x506.jpg',
+    video: null,
+    cta: 'View Vive Series',
   },
 ];
 
@@ -26,15 +38,36 @@ export default function HeroSlider() {
   const { colorTheme, designTheme } = useTheme();
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [textVisible, setTextVisible] = useState(true);
+  const [showVideo, setShowVideo] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const parallaxRef = useRef<HTMLDivElement>(null);
+
+  // Parallax effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (parallaxRef.current) {
+        const scrollY = window.scrollY;
+        parallaxRef.current.style.transform = `translateY(${scrollY * 0.3}px)`;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const goToSlide = useCallback((index: number) => {
-    if (isTransitioning) return;
+    if (isTransitioning || index === current) return;
     setIsTransitioning(true);
+    setTextVisible(false);
+    setShowVideo(false);
     setTimeout(() => {
       setCurrent(index);
-      setTimeout(() => setIsTransitioning(false), 50);
-    }, 300);
-  }, [isTransitioning]);
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setTextVisible(true);
+      }, 100);
+    }, 500);
+  }, [isTransitioning, current]);
 
   const nextSlide = useCallback(() => {
     goToSlide((current + 1) % slides.length);
@@ -45,88 +78,164 @@ export default function HeroSlider() {
   }, [current, goToSlide]);
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5000);
+    const timer = setInterval(nextSlide, 7000);
     return () => clearInterval(timer);
   }, [nextSlide]);
 
+  // Auto-play video on first slide
+  useEffect(() => {
+    if (current === 0) {
+      const timer = setTimeout(() => setShowVideo(true), 1500);
+      return () => clearTimeout(timer);
+    }
+    return () => setShowVideo(false);
+  }, [current]);
+
   return (
-    <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
-      {/* Background */}
+    <section className="relative w-full h-screen min-h-[600px] max-h-[900px] overflow-hidden">
+      {/* Background images with crossfade */}
+      {slides.map((slide, i) => (
+        <div
+          key={i}
+          className="absolute inset-0 transition-opacity duration-1000"
+          style={{ opacity: i === current ? 1 : 0 }}
+          ref={i === 0 ? parallaxRef : undefined}
+        >
+          <Image
+            src={slide.image}
+            alt={slide.title}
+            fill
+            unoptimized
+            className="object-cover"
+            priority={i === 0}
+            sizes="100vw"
+          />
+          {/* Video overlay for first slide */}
+          {i === 0 && showVideo && (
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src={slide.video} type="video/mp4" />
+            </video>
+          )}
+        </div>
+      ))}
+
+      {/* Dark gradient overlay for readability */}
       <div
-        className="absolute inset-0 transition-opacity duration-500"
+        className="absolute inset-0 z-[1]"
         style={{
-          background: `linear-gradient(135deg, ${colorTheme.primaryDark} 0%, ${colorTheme.primary} 40%, ${colorTheme.primaryLight} 100%)`,
+          background: `linear-gradient(135deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.55) 100%)`,
         }}
       />
 
-      {/* Decorative shapes */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="absolute -top-20 -right-20 w-96 h-96 rounded-full opacity-10"
-          style={{ background: colorTheme.accent }}
-        />
-        <div
-          className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full opacity-5"
-          style={{ background: colorTheme.accent }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-5"
-          style={{ background: colorTheme.accentLight }}
-        />
-        {/* Geometric lines */}
-        <svg className="absolute inset-0 w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="0" x2="100%" y2="100%" stroke="white" strokeWidth="1" />
-          <line x1="100%" y1="0" x2="0" y2="100%" stroke="white" strokeWidth="1" />
-          <line x1="50%" y1="0" x2="50%" y2="100%" stroke="white" strokeWidth="0.5" />
-        </svg>
-      </div>
+      {/* Accent gradient strip */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-1 z-[2]"
+        style={{ background: colorTheme.accent }}
+      />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-center justify-center px-4">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="relative z-10 h-full flex items-center px-4 sm:px-8 md:px-16 lg:px-24">
+        <div className="max-w-3xl">
+          {/* Animated badge */}
           <div
-            className={`transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}
+            className={`transition-all duration-700 ${
+              textVisible
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-4'
+            }`}
+            style={{ transitionDelay: '0.1s' }}
           >
-            {/* Small badge */}
-            <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium text-white/90 mb-8 animate-fade-in"
-              style={{ background: `${colorTheme.accent}30`, border: `1px solid ${colorTheme.accent}50` }}
+            <span
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-6"
+              style={{
+                color: colorTheme.accentLight,
+                background: `${colorTheme.accent}30`,
+                border: `1px solid ${colorTheme.accent}50`,
+              }}
             >
               <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: colorTheme.accent }} />
-              TOSTEM India - Japanese Excellence
-            </div>
+              TOSTEM India — Japanese Excellence
+            </span>
+          </div>
 
-            <h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-6 animate-slide-up"
-              style={{ fontWeight: 900 }}
+          {/* Series Name */}
+          <h1
+            className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-none mb-2 transition-all duration-700 ${
+              textVisible
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-8'
+            }`}
+            style={{
+              transitionDelay: '0.2s',
+              fontWeight: 900,
+              letterSpacing: '-0.02em',
+            }}
+          >
+            {slides[current].title}
+          </h1>
+
+          {/* Subtitle */}
+          <h2
+            className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-6 transition-all duration-700 ${
+              textVisible
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-8'
+            }`}
+            style={{
+              transitionDelay: '0.35s',
+              color: colorTheme.accentLight,
+            }}
+          >
+            {slides[current].subtitle}
+          </h2>
+
+          {/* Description */}
+          <p
+            className={`text-base sm:text-lg md:text-xl text-white/75 mb-10 max-w-xl leading-relaxed transition-all duration-700 ${
+              textVisible
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: '0.5s' }}
+          >
+            {slides[current].description}
+          </p>
+
+          {/* CTA Buttons */}
+          <div
+            className={`flex flex-col sm:flex-row items-start gap-4 transition-all duration-700 ${
+              textVisible
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: '0.65s' }}
+          >
+            <a
+              href="#products"
+              className="group px-8 py-4 text-base font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center gap-2"
+              style={{
+                background: colorTheme.accent,
+                borderRadius: designTheme.buttonRadius,
+                boxShadow: `0 4px 20px ${colorTheme.accent}40`,
+              }}
             >
-              {slides[current].title}
-            </h1>
-
-            <p className="text-lg sm:text-xl md:text-2xl text-white/70 mb-10 max-w-2xl mx-auto animate-fade-in-delay">
-              {slides[current].subtitle}
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-delay-2">
-              <a
-                href="#contact"
-                className="px-8 py-3.5 text-lg font-bold text-white transition-all hover:scale-105 hover:shadow-xl flex items-center gap-2"
-                style={{
-                  background: colorTheme.accent,
-                  borderRadius: designTheme.buttonRadius,
-                  boxShadow: `0 4px 20px ${colorTheme.accent}40`,
-                }}
-              >
-                Get a Quote <ArrowRight className="w-5 h-5" />
-              </a>
-              <a
-                href="#products"
-                className="px-8 py-3.5 text-lg font-semibold text-white/90 border-2 border-white/30 hover:border-white/60 transition-all hover:scale-105"
-                style={{ borderRadius: designTheme.buttonRadius }}
-              >
-                Explore Products
-              </a>
-            </div>
+              {slides[current].cta}
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a
+              href="#contact"
+              className="px-8 py-4 text-base font-semibold text-white/90 border-2 border-white/30 hover:border-white/60 transition-all duration-300 hover:scale-105"
+              style={{ borderRadius: designTheme.buttonRadius }}
+            >
+              Get a Quote
+            </a>
           </div>
         </div>
       </div>
@@ -134,7 +243,7 @@ export default function HeroSlider() {
       {/* Navigation arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full text-white/60 hover:text-white transition-all hover:scale-110"
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full text-white/60 hover:text-white transition-all duration-300 hover:scale-110 hover:bg-white/20"
         style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)' }}
         aria-label="Previous slide"
       >
@@ -142,34 +251,44 @@ export default function HeroSlider() {
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full text-white/60 hover:text-white transition-all hover:scale-110"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full text-white/60 hover:text-white transition-all duration-300 hover:scale-110 hover:bg-white/20"
         style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)' }}
         aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
 
-      {/* Dots */}
+      {/* Slide dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-        {slides.map((_, i) => (
+        {slides.map((slide, i) => (
           <button
             key={i}
             onClick={() => goToSlide(i)}
-            className="transition-all duration-300"
+            className="transition-all duration-500"
             style={{
-              width: i === current ? '32px' : '10px',
+              width: i === current ? '40px' : '10px',
               height: '10px',
               borderRadius: '5px',
               background: i === current ? colorTheme.accent : 'rgba(255,255,255,0.4)',
+              boxShadow: i === current ? `0 0 12px ${colorTheme.accent}60` : 'none',
             }}
-            aria-label={`Go to slide ${i + 1}`}
+            aria-label={`Go to slide ${i + 1}: ${slide.title}`}
           />
         ))}
       </div>
 
+      {/* Slide counter */}
+      <div className="absolute bottom-8 right-8 z-20 hidden md:flex items-center gap-2 text-white/50 text-sm font-mono">
+        <span style={{ color: colorTheme.accentLight, fontWeight: 700 }}>
+          {String(current + 1).padStart(2, '0')}
+        </span>
+        <span>/</span>
+        <span>{String(slides.length).padStart(2, '0')}</span>
+      </div>
+
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 right-8 z-20 hidden md:flex flex-col items-center gap-2 text-white/40 text-xs">
-        <span className="rotate-90 tracking-widest">SCROLL</span>
+      <div className="absolute bottom-8 left-8 z-20 hidden md:flex flex-col items-center gap-2 text-white/40 text-xs">
+        <span className="rotate-90 tracking-widest text-[10px]">SCROLL</span>
         <div className="w-px h-8 bg-white/20 relative overflow-hidden">
           <div className="w-full h-3 animate-scroll-down" style={{ background: colorTheme.accent }} />
         </div>

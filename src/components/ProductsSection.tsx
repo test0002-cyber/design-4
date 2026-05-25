@@ -1,45 +1,48 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { useTheme } from './ThemeProvider';
-import { ArrowRight, Wind, DoorOpen, Square, MoveHorizontal, DoorOpenIcon, Columns } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+
+const CDN = 'https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/';
 
 const products = [
   {
-    title: 'Sliding Windows',
-    description: 'Smooth horizontal sliding mechanism for effortless ventilation and panoramic views.',
-    icon: MoveHorizontal,
-    gradient: 'from-blue-900/80 to-blue-700/60',
+    title: 'Aluminium Doors',
+    description: 'Elegant and durable aluminium doors featuring Japanese precision engineering. Available in Sliding, Casement, French, Folding, Corner Slider, and Slide & Fold designs.',
+    image: CDN + 'wp-content/uploads/2020/08/Aluminum-Doors-Home-Office.jpg',
+    designs: ['Sliding', 'Casement', 'French', 'Folding', 'Corner Slider'],
   },
   {
-    title: 'Casement Windows',
-    description: 'Hinged side-opening windows providing maximum airflow and unobstructed views.',
-    icon: Wind,
-    gradient: 'from-teal-900/80 to-teal-700/60',
+    title: 'Aluminium Windows',
+    description: 'Premium aluminium windows crafted for Indian homes with superior thermal insulation, sound reduction, and weather resistance.',
+    image: CDN + 'wp-content/uploads/2020/08/Aluminium-Windows-Home-Office-1.jpg',
+    designs: ['Sliding', 'Casement', 'Awning', 'Fixed', 'Glass To Glass'],
   },
   {
-    title: 'Fixed Windows',
-    description: 'Stationary windows designed to bring in natural light and frame beautiful views.',
-    icon: Square,
-    gradient: 'from-emerald-900/80 to-emerald-700/60',
+    title: 'Steel Entrance Doors',
+    description: 'GIESTA steel entrance doors — combining robust security with sophisticated Italian design for an impressive first impression.',
+    image: CDN + 'wp-content/uploads/2020/07/Steel-Door.jpg',
+    designs: ['Single Door', 'Double Door'],
   },
   {
-    title: 'Sliding Doors',
-    description: 'Wide opening sliding doors for seamless indoor-outdoor living experience.',
-    icon: Columns,
-    gradient: 'from-cyan-900/80 to-cyan-700/60',
+    title: 'Facades',
+    description: 'Stunning curtain wall and storefront facade systems that transform building exteriors with modern elegance and structural integrity.',
+    image: CDN + 'wp-content/uploads/2020/08/Facade-Home-Office.jpg',
+    designs: ['Curtain Wall', 'Store Front'],
   },
   {
-    title: 'Casement Doors',
-    description: 'Elegant hinged doors offering superior insulation and classic aesthetics.',
-    icon: DoorOpen,
-    gradient: 'from-violet-900/80 to-violet-700/60',
+    title: 'Interior',
+    description: 'Beautiful interior solutions including hanging, swing, and fixed divider doors that redefine spaces within your home or office.',
+    image: CDN + 'wp-content/uploads/2020/08/Interior-Home-Office.jpg',
+    designs: ['Hanging', 'Swing', 'Fixed Divider'],
   },
   {
-    title: 'Fold & Slide Doors',
-    description: 'Innovative folding doors that create expansive openings for grand spaces.',
-    icon: DoorOpenIcon,
-    gradient: 'from-amber-900/80 to-amber-700/60',
+    title: 'Airflow System',
+    description: 'Advanced ventilation and louver systems designed to maximize airflow while maintaining aesthetics and protection from the elements.',
+    image: CDN + 'wp-content/uploads/2020/08/Airflow-System-Home-Office.jpg',
+    designs: ['Ventilator', 'Louver'],
   },
 ];
 
@@ -75,71 +78,88 @@ export default function ProductsSection() {
             Premium Aluminium Solutions
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover our range of high-quality aluminium windows and doors, crafted with Japanese precision.
+            Discover our comprehensive range of high-quality aluminium windows, doors, and building solutions, crafted with Japanese precision for Indian homes.
           </p>
         </div>
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product, i) => {
-            const Icon = product.icon;
-            return (
+          {products.map((product, i) => (
+            <div
+              key={product.title}
+              className={`group cursor-pointer transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+              style={{ transitionDelay: `${i * 100}ms` }}
+            >
               <div
-                key={product.title}
-                className={`group cursor-pointer transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-                style={{ transitionDelay: `${i * 100}ms` }}
+                className="h-full overflow-hidden card-hover-lift"
+                style={{
+                  borderRadius: designTheme.cardRadius,
+                  boxShadow: designTheme.cardShadow,
+                  border: designTheme.cardBorder,
+                  background: designTheme.cardBg,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = designTheme.cardHoverShadow;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = designTheme.cardShadow;
+                }}
               >
-                <div
-                  className="h-full overflow-hidden transition-all duration-300 hover:-translate-y-2"
-                  style={{
-                    borderRadius: designTheme.cardRadius,
-                    boxShadow: designTheme.cardShadow,
-                    border: designTheme.cardBorder,
-                    background: designTheme.cardBg,
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = designTheme.cardHoverShadow;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow = designTheme.cardShadow;
-                  }}
-                >
-                  {/* Image placeholder */}
+                {/* Real Image */}
+                <div className="relative h-52 overflow-hidden img-zoom-container">
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    unoptimized
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  {/* Overlay gradient */}
                   <div
-                    className={`relative h-48 bg-gradient-to-br ${product.gradient} flex items-center justify-center overflow-hidden`}
-                  >
-                    <Icon className="w-16 h-16 text-white/80 group-hover:scale-110 transition-transform duration-500" />
-                    {/* Decorative corner */}
-                    <div
-                      className="absolute top-0 right-0 w-20 h-20 opacity-20"
-                      style={{
-                        background: `linear-gradient(135deg, transparent 50%, ${colorTheme.accent}40 50%)`,
-                      }}
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    <h3
-                      className="text-xl mb-2 text-gray-900 group-hover:translate-x-1 transition-transform"
-                      style={{ fontWeight: 'var(--design-heading-weight, 700)' }}
-                    >
-                      {product.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                      {product.description}
-                    </p>
-                    <span
-                      className="inline-flex items-center gap-1 text-sm font-semibold transition-all group-hover:gap-2"
-                      style={{ color: colorTheme.accent }}
-                    >
-                      Learn More <ArrowRight className="w-4 h-4" />
-                    </span>
+                    className="absolute inset-0 transition-opacity duration-500 opacity-30 group-hover:opacity-10"
+                    style={{ background: `linear-gradient(to top, ${colorTheme.primary}80, transparent)` }}
+                  />
+                  {/* Design tags */}
+                  <div className="absolute bottom-3 left-3 flex flex-wrap gap-1.5">
+                    {product.designs.slice(0, 3).map((design) => (
+                      <span
+                        key={design}
+                        className="px-2 py-0.5 text-[10px] font-semibold text-white rounded backdrop-blur-sm"
+                        style={{ background: `${colorTheme.accent}cc` }}
+                      >
+                        {design}
+                      </span>
+                    ))}
+                    {product.designs.length > 3 && (
+                      <span className="px-2 py-0.5 text-[10px] font-semibold text-white/80 rounded backdrop-blur-sm bg-white/20">
+                        +{product.designs.length - 3}
+                      </span>
+                    )}
                   </div>
                 </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <h3
+                    className="text-xl mb-2 text-gray-900 group-hover:translate-x-1 transition-transform duration-300"
+                    style={{ fontWeight: 'var(--design-heading-weight, 700)' }}
+                  >
+                    {product.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                    {product.description}
+                  </p>
+                  <span
+                    className="inline-flex items-center gap-1 text-sm font-semibold transition-all duration-300 group-hover:gap-2"
+                    style={{ color: colorTheme.accent }}
+                  >
+                    Learn More <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>
