@@ -7,6 +7,8 @@ import StatsBand from '@/components/StatsBand';
 import ProductsSection from '@/components/ProductsSection';
 import SeriesSection from '@/components/SeriesSection';
 import ColourSection from '@/components/ColourSection';
+import PartnersSection from '@/components/PartnersSection';
+import AwardsSection from '@/components/AwardsSection';
 import BlogSection from '@/components/BlogSection';
 import GallerySection from '@/components/GallerySection';
 import VideoSection from '@/components/VideoSection';
@@ -25,6 +27,8 @@ export default function Home() {
           <ProductsSection />
           <SeriesSection />
           <ColourSection />
+          <PartnersSection />
+          <AwardsSection />
           <BlogSection />
           <GallerySection />
           <VideoSection />
