@@ -7,6 +7,7 @@ import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 
 const CDN = 'https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/';
 
+// Limited to 12 images max to keep page height manageable
 const galleryItems = [
   { id: 1, title: 'Grants Series Sliding Window', image: CDN + 'wp-content/uploads/2020/07/home-gallery-img-1-748x441.jpg', aspect: 'wide' },
   { id: 2, title: 'Casement Window Detail', image: CDN + 'wp-content/uploads/2020/07/home-gallery-img-2-461x629.jpg', aspect: 'tall' },
@@ -14,24 +15,12 @@ const galleryItems = [
   { id: 4, title: 'Modern Facade Design', image: CDN + 'wp-content/uploads/2020/07/home-gallery-img-4-869x484.jpg', aspect: 'wide' },
   { id: 5, title: 'AP Palazzo Project', image: CDN + 'wp-content/uploads/2025/04/AP-Palazzo-70.jpg', aspect: 'wide' },
   { id: 6, title: 'Baan Nawat Residence', image: CDN + 'wp-content/uploads/2025/04/Baan-Nawat-43.jpg', aspect: 'tall' },
-  { id: 7, title: 'Luxury Living Space', image: CDN + 'wp-content/uploads/2025/04/DSC03783-1.jpg', aspect: 'wide' },
-  { id: 8, title: 'Chantra Khiri Villa', image: CDN + 'wp-content/uploads/2025/04/Chantra-Khiri-13.jpg', aspect: 'square' },
-  { id: 9, title: 'Nature Island Project', image: CDN + 'wp-content/uploads/2025/04/d-Natures-Island-58.jpg', aspect: 'wide' },
-  { id: 10, title: 'Exteriors Project', image: CDN + 'wp-content/uploads/2025/04/Exteriors-23.jpg', aspect: 'wide' },
-  { id: 11, title: 'Sarin Vista Residence', image: CDN + 'wp-content/uploads/2025/04/Sarin-Vista-24-lowres.jpg', aspect: 'wide' },
+  { id: 7, title: 'Chantra Khiri Villa', image: CDN + 'wp-content/uploads/2025/04/Chantra-Khiri-13.jpg', aspect: 'square' },
+  { id: 8, title: 'Exteriors Project', image: CDN + 'wp-content/uploads/2025/04/Exteriors-23.jpg', aspect: 'wide' },
+  { id: 9, title: 'Formal Living Space', image: CDN + 'wp-content/uploads/2025/04/Formal-living-to-landscape.jpg', aspect: 'tall' },
+  { id: 10, title: 'SJP Residence', image: CDN + 'wp-content/uploads/2025/04/SJP1631-Enhanced-NR-Edit.jpg', aspect: 'wide' },
+  { id: 11, title: 'Tostem Chevalife', image: CDN + 'wp-content/uploads/2025/04/Tostem-Chevalife_10.jpg', aspect: 'square' },
   { id: 12, title: 'Oxygen Project', image: CDN + 'wp-content/uploads/2025/04/Oxygen_51.jpg', aspect: 'square' },
-  { id: 13, title: 'Nirvana Beyond', image: CDN + 'wp-content/uploads/2025/04/Nirvana-Beyond-03-lowres.jpg', aspect: 'wide' },
-  { id: 14, title: 'Exion Project', image: CDN + 'wp-content/uploads/2025/04/Exion-11.jpg', aspect: 'wide' },
-  { id: 15, title: 'Formal Living Space', image: CDN + 'wp-content/uploads/2025/04/Formal-living-to-landscape.jpg', aspect: 'tall' },
-  { id: 16, title: 'Plover Residence', image: CDN + 'wp-content/uploads/2025/04/Plover-13.jpg', aspect: 'wide' },
-  { id: 17, title: 'Tara Keree Villa', image: CDN + 'wp-content/uploads/2025/04/Tara-Keree-43.jpg', aspect: 'tall' },
-  { id: 18, title: 'The Connect Project', image: CDN + 'wp-content/uploads/2025/04/The-Connect-13-lowres.jpg', aspect: 'wide' },
-  { id: 19, title: 'Warangkana House', image: CDN + 'wp-content/uploads/2025/04/Warangkana-House-57.jpg', aspect: 'wide' },
-  { id: 20, title: 'Tostem Chevalife', image: CDN + 'wp-content/uploads/2025/04/Tostem-Chevalife_10.jpg', aspect: 'square' },
-  { id: 21, title: 'SJP Residence', image: CDN + 'wp-content/uploads/2025/04/SJP1631-Enhanced-NR-Edit.jpg', aspect: 'wide' },
-  { id: 22, title: 'De Vielle Residence', image: CDN + 'wp-content/uploads/2025/04/De-Vielle_36.jpg', aspect: 'tall' },
-  { id: 23, title: 'DJI Aerial View', image: CDN + 'wp-content/uploads/2025/04/DJI_0528-1.jpg', aspect: 'wide' },
-  { id: 24, title: 'Central Dry Court', image: CDN + 'wp-content/uploads/2025/04/05-Central-Dry-Court-18.jpg', aspect: 'wide' },
 ];
 
 export default function GallerySection() {

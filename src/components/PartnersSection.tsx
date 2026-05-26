@@ -1,11 +1,9 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 import { useTheme } from './ThemeProvider';
 import { ExternalLink, Handshake } from 'lucide-react';
 
-const CDN = 'https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/';
 
 interface Partner {
   name: string;
@@ -13,72 +11,56 @@ interface Partner {
   link: string;
   description: string;
   category: string;
-  isSvg?: boolean;
 }
 
 const partners: Partner[] = [
   {
     name: 'LIXIL',
-    src: 'https://www.lixil.com/common/img/logo.svg',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Lixil_company_logo.svg/330px-Lixil_company_logo.svg.png',
     link: 'https://www.lixil.com/',
     description: 'Global leader in housing and building materials, TOSTEM\'s parent company driving innovation across living spaces worldwide.',
     category: 'Parent Company',
-    isSvg: true,
   },
   {
     name: 'TOSTEM',
-    src: CDN + 'wp-content/uploads/2020/12/tostem-sm.png',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Tostem_logo.svg/330px-Tostem_logo.svg.png',
     link: 'https://www.tostem.com/en/',
     description: 'Japan\'s premier aluminium window and door brand, bringing 40+ years of precision engineering to the Indian market.',
     category: 'Core Brand',
   },
   {
     name: 'GROHE',
-    src: 'https://static.cdnlogo.com/logos/g/44/grohe.svg',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/GROHE_logo.svg/330px-GROHE_logo.svg.png',
     link: 'https://www.grohe.com/en/corporate/homepage.html',
     description: 'World-leading premium brand for bathroom solutions and kitchen fittings, renowned for German engineering and sustainable design.',
     category: 'LIXIL Group',
-    isSvg: true,
   },
   {
     name: 'American Standard',
-    src: 'https://www.lixil.com/en/about/img/about_brand_as_img.jpg',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/American_Standard_logo_2017.svg/330px-American_Standard_logo_2017.svg.png',
     link: 'https://www.americanstandard.in/',
     description: 'Iconic American brand offering high-quality bathroom and kitchen products, combining innovation with timeless design for modern Indian homes.',
     category: 'LIXIL Group',
   },
   {
     name: 'INAX',
-    src: 'https://www.lixil.com/en/about/img/about_brand_inax_img.jpg',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/INAX_logo.svg/330px-INAX_logo.svg.png',
     link: 'https://www.inax.com/',
     description: 'Japan\'s leading brand for premium bathroom fixtures and tiles, known for exquisite craftsmanship and cutting-edge technology.',
     category: 'LIXIL Group',
   },
 ];
 
-// Reusable partner logo renderer
+// Reusable partner logo renderer — all logos use Wikimedia Commons PNGs
 function PartnerLogo({ partner, className = '', imgClassName = '' }: { partner: Partner; className?: string; imgClassName?: string }) {
-  if (partner.isSvg) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={partner.src}
-        alt={partner.name}
-        className={`w-auto object-contain ${imgClassName}`}
-        style={{ maxWidth: '120px', maxHeight: '48px' }}
-        loading="lazy"
-      />
-    );
-  }
   return (
-    <Image
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
       src={partner.src}
       alt={partner.name}
-      width={120}
-      height={48}
-      unoptimized
-      className={`h-auto w-auto object-contain ${imgClassName}`}
-      style={{ maxWidth: '120px', maxHeight: '48px' }}
+      className={`w-auto object-contain ${imgClassName}`}
+      style={{ maxWidth: '140px', maxHeight: '56px' }}
+      loading="lazy"
     />
   );
 }
@@ -196,7 +178,7 @@ export default function PartnersSection() {
             >
               <PartnerLogo
                 partner={partner}
-                imgClassName={`transition-all duration-400 ${hoveredIndex === i && !partner.isSvg ? 'brightness-0 invert' : ''}`}
+                imgClassName={`transition-all duration-400 ${hoveredIndex === i ? 'brightness-0 invert' : ''}`}
               />
             </div>
             <div>

@@ -8,11 +8,11 @@ import { Mail, Phone, MapPin, Send, ArrowUp } from 'lucide-react';
 const CDN = 'https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/';
 
 const partnerLogos = [
-  { name: 'LIXIL', src: 'https://www.lixil.com/common/img/logo.svg', isSvg: true },
-  { name: 'TOSTEM', src: CDN + 'wp-content/uploads/2020/12/tostem-sm.png', isSvg: false },
-  { name: 'GROHE', src: 'https://static.cdnlogo.com/logos/g/44/grohe.svg', isSvg: true },
-  { name: 'American Standard', src: 'https://www.lixil.com/en/about/img/about_brand_as_img.jpg', isSvg: false },
-  { name: 'INAX', src: 'https://www.lixil.com/en/about/img/about_brand_inax_img.jpg', isSvg: false },
+  { name: 'LIXIL', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Lixil_company_logo.svg/330px-Lixil_company_logo.svg.png' },
+  { name: 'TOSTEM', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Tostem_logo.svg/330px-Tostem_logo.svg.png' },
+  { name: 'GROHE', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/GROHE_logo.svg/330px-GROHE_logo.svg.png' },
+  { name: 'American Standard', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/American_Standard_logo_2017.svg/330px-American_Standard_logo_2017.svg.png' },
+  { name: 'INAX', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/INAX_logo.svg/330px-INAX_logo.svg.png' },
 ];
 
 const socialLinks = [
@@ -200,25 +200,14 @@ export default function Footer() {
           <div className="flex items-center justify-center gap-8 flex-wrap">
             {partnerLogos.map((logo) => (
               <div key={logo.name} className="opacity-50 hover:opacity-100 transition-opacity duration-300" style={{ filter: 'brightness(0) invert(1)' }}>
-                {logo.isSvg ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={logo.src}
-                    alt={logo.name}
-                    className="h-6 w-auto"
-                    style={{ maxWidth: '80px' }}
-                    loading="lazy"
-                  />
-                ) : (
-                  <Image
-                    src={logo.src}
-                    alt={logo.name}
-                    width={60}
-                    height={24}
-                    unoptimized
-                    className="h-6 w-auto"
-                  />
-                )}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={logo.src}
+                  alt={logo.name}
+                  className="h-7 w-auto"
+                  style={{ maxWidth: '90px' }}
+                  loading="lazy"
+                />
               </div>
             ))}
           </div>
