@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  // Remove standalone output which causes issues with Cloudflare Pages
+  output: undefined,
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -25,6 +26,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Add export for static generation if needed
+  experimental: {
+    outputFileTracingExcludes: {
+      '*': [
+        './node_modules/@swc/core-linux-x64-gnu',
+        './node_modules/@swc/core-linux-x64-musl',
+        './node_modules/@swc/wasm',
+      ]
+    }
+  }
 };
 
 export default nextConfig;
