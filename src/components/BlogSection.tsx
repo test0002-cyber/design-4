@@ -16,7 +16,7 @@ const blogs = [
     date: '10 Jan 2025',
     category: 'Design',
     readTime: '6 min read',
-    image: CDN + 'wp-content/uploads/2024/08/Different-Stained-Glass-Designs-for-Doors-and-Windows.jpg',
+    image: CDN + 'wp-content/uploads/2025/10/Different-Stained-Glass-Designs-for-Doors-and-Windows.jpg',
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const blogs = [
     date: '22 Jan 2025',
     category: 'Interior',
     readTime: '5 min read',
-    image: CDN + 'wp-content/uploads/2024/07/Plywood-Almirah-banner.jpg',
+    image: CDN + 'wp-content/uploads/2025/10/Plywood-Almirah-banner.jpg',
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const blogs = [
     date: '5 Feb 2025',
     category: 'Comparison',
     readTime: '7 min read',
-    image: CDN + 'wp-content/uploads/2024/06/French-Doors-627x317.jpg',
+    image: CDN + 'wp-content/uploads/2021/02/French-Doors-627x317.jpg',
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const blogs = [
     date: '18 Feb 2025',
     category: 'Design',
     readTime: '5 min read',
-    image: CDN + 'wp-content/uploads/2024/05/Amazing-Aluminium-Door-422x329.jpg',
+    image: CDN + 'wp-content/uploads/2021/02/Amazing-Aluminium-Door-422x329.jpg',
   },
 ];
 

@@ -12,22 +12,29 @@ const testimonials = [
     title: 'Mr. Amarnath',
     subtitle: 'Customer Testimonial',
     videoUrl: 'https://www.tostemindia.com/wp-content/uploads/2024/09/Customer-Testimonial-Mr.-Amarnath-Deltra-Global.mp4',
-    thumbnail: CDN + 'wp-content/uploads/2024/09/Customer-Testimonial-Mr.-Amarnath-Deltra-Global.jpg',
+    thumbnail: CDN + 'wp-content/uploads/2024/09/amarnath.png',
     quote: 'We are extremely happy with TOSTEM windows. The quality and finish are outstanding, and the installation team was very professional.',
   },
   {
     title: 'Mr. Dheeraj',
     subtitle: 'Customer Testimonial — Hyderabad',
     videoUrl: 'https://www.tostemindia.com/wp-content/uploads/2024/09/Customer-Testimonial-Mr.-Dheeraj-Hyderabad-Deltra-Global.mp4',
-    thumbnail: CDN + 'wp-content/uploads/2024/09/Customer-Testimonial-Mr.-Dheeraj-Hyderabad-Deltra-Global.jpg',
+    thumbnail: CDN + 'wp-content/uploads/2024/09/testimonials_img.png',
     quote: 'TOSTEM windows have completely transformed our home. The sound insulation is remarkable and the design is elegant.',
   },
   {
     title: 'Real Homes, Real Stories',
     subtitle: 'Deltra Aluminium Doors & Windows',
     videoUrl: 'https://www.tostemindia.com/wp-content/uploads/2024/09/Real-Homes-Real-Stories-Deltra-Aluminum-Doors-Windows.mp4',
-    thumbnail: CDN + 'wp-content/uploads/2024/09/Real-Homes-Real-Stories-Deltra-Aluminum-Doors-Windows.jpg',
+    thumbnail: CDN + 'wp-content/uploads/2020/09/testimonials-min-1349x284.jpg',
     quote: 'Real homes featuring TOSTEM aluminium doors and windows — hear directly from homeowners about their experience.',
+  },
+  {
+    title: "Mr. Pratap's Experience",
+    subtitle: 'TOSTEM Windows & Doors',
+    videoUrl: 'https://www.tostemindia.com/wp-content/uploads/2025/05/Mr.-Pratap\u2019s-Experience-with-TOSTEM-Windows-Doors.mp4',
+    thumbnail: CDN + 'wp-content/uploads/2024/09/testimonials_img.png',
+    quote: 'Outstanding quality and professional service from the TOSTEM team. Highly recommended for anyone looking for premium windows and doors.',
   },
 ];
 

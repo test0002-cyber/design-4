@@ -11,37 +11,37 @@ const products = [
   {
     title: 'Aluminium Doors',
     description: 'Elegant and durable aluminium doors featuring Japanese precision engineering. Available in Sliding, Casement, French, Folding, Corner Slider, and Slide & Fold designs.',
-    image: CDN + 'wp-content/uploads/2020/08/Aluminum-Doors-Home-Office.jpg',
+    image: CDN + 'wp-content/uploads/2025/04/Aluminum-Doors-Home-Office.jpg',
     designs: ['Sliding', 'Casement', 'French', 'Folding', 'Corner Slider'],
   },
   {
     title: 'Aluminium Windows',
     description: 'Premium aluminium windows crafted for Indian homes with superior thermal insulation, sound reduction, and weather resistance.',
-    image: CDN + 'wp-content/uploads/2020/08/Aluminium-Windows-Home-Office-1.jpg',
+    image: CDN + 'wp-content/uploads/2025/04/Aluminium-Windows-Home-Office-1.jpg',
     designs: ['Sliding', 'Casement', 'Awning', 'Fixed', 'Glass To Glass'],
   },
   {
     title: 'Steel Entrance Doors',
     description: 'GIESTA steel entrance doors — combining robust security with sophisticated Italian design for an impressive first impression.',
-    image: CDN + 'wp-content/uploads/2020/07/Steel-Door.jpg',
+    image: CDN + 'wp-content/uploads/2020/07/home-gallery-img-1-748x441.jpg',
     designs: ['Single Door', 'Double Door'],
   },
   {
     title: 'Facades',
     description: 'Stunning curtain wall and storefront facade systems that transform building exteriors with modern elegance and structural integrity.',
-    image: CDN + 'wp-content/uploads/2020/08/Facade-Home-Office.jpg',
+    image: CDN + 'wp-content/uploads/2025/04/Exteriors-23.jpg',
     designs: ['Curtain Wall', 'Store Front'],
   },
   {
     title: 'Interior',
     description: 'Beautiful interior solutions including hanging, swing, and fixed divider doors that redefine spaces within your home or office.',
-    image: CDN + 'wp-content/uploads/2020/08/Interior-Home-Office.jpg',
+    image: CDN + 'wp-content/uploads/2025/04/Formal-living-to-landscape.jpg',
     designs: ['Hanging', 'Swing', 'Fixed Divider'],
   },
   {
     title: 'Airflow System',
     description: 'Advanced ventilation and louver systems designed to maximize airflow while maintaining aesthetics and protection from the elements.',
-    image: CDN + 'wp-content/uploads/2020/08/Airflow-System-Home-Office.jpg',
+    image: CDN + 'wp-content/uploads/2025/04/Oxygen_54.jpg',
     designs: ['Ventilator', 'Louver'],
   },
 ];

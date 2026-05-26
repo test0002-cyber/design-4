@@ -8,11 +8,11 @@ import { Mail, Phone, MapPin, Send, ArrowUp } from 'lucide-react';
 const CDN = 'https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/';
 
 const partnerLogos = [
-  { name: 'American Standard', src: CDN + 'wp-content/uploads/2020/07/american-s-sm.png' },
-  { name: 'GROHE', src: CDN + 'wp-content/uploads/2020/07/grohe-sm.png' },
-  { name: 'TOSTEM', src: CDN + 'wp-content/uploads/2020/07/tostem-sm.png' },
-  { name: 'INAX', src: CDN + 'wp-content/uploads/2020/07/inax-sm.png' },
-  { name: 'LIXIL', src: CDN + 'wp-content/uploads/2020/07/lixil-sm.png' },
+  { name: 'American Standard', src: CDN + 'wp-content/uploads/2020/12/american-s-sm.png' },
+  { name: 'GROHE', src: CDN + 'wp-content/uploads/2020/12/grohe-sm.png' },
+  { name: 'TOSTEM', src: CDN + 'wp-content/uploads/2020/12/tostem-sm.png' },
+  { name: 'INAX', src: CDN + 'wp-content/uploads/2020/12/inax-sm.png' },
+  { name: 'LIXIL', src: CDN + 'wp-content/uploads/2020/12/lixil-sm.png' },
 ];
 
 const socialLinks = [

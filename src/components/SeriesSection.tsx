@@ -21,7 +21,7 @@ const seriesData = [
       'Dual sealing system for weather protection',
       'Available in 100+ colour options',
     ],
-    image: CDN + 'wp-content/uploads/2020/08/Grants-Series.jpg',
+    image: CDN + 'wp-content/uploads/2025/04/AP-Palazzo-70.jpg',
   },
   {
     id: 'atis',
@@ -36,7 +36,7 @@ const seriesData = [
       'Low maintenance design',
       'Wide range of design configurations',
     ],
-    image: CDN + 'wp-content/uploads/2020/08/ATIS-Series.jpg',
+    image: CDN + 'wp-content/uploads/2025/04/Chantra-Khiri-20.jpg',
   },
   {
     id: 'we-plus',
@@ -51,7 +51,7 @@ const seriesData = [
       'Enhanced security features',
       'Energy-efficient design',
     ],
-    image: CDN + 'wp-content/uploads/2020/08/We-Plus-Series.jpg',
+    image: CDN + 'wp-content/uploads/2025/04/SJP1631-Enhanced-NR-Edit.jpg',
   },
   {
     id: 'we-70',
@@ -66,7 +66,7 @@ const seriesData = [
       'Quick installation system',
       'Comprehensive warranty coverage',
     ],
-    image: CDN + 'wp-content/uploads/2020/08/We-70-Series.jpg',
+    image: CDN + 'wp-content/uploads/2025/04/Baan-Nawat-43.jpg',
   },
   {
     id: 'giesta',
@@ -81,7 +81,7 @@ const seriesData = [
       'Fire-rated options available',
       'Customizable design panels',
     ],
-    image: CDN + 'wp-content/uploads/2020/08/Giesta-Series.jpg',
+    image: CDN + 'wp-content/uploads/2025/04/DSC03783-1.jpg',
   },
 ];
 
