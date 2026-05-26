@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useTheme } from './ThemeProvider';
-import { ExternalLink, Handshake, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, Handshake } from 'lucide-react';
 
 const CDN = 'https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/';
 
@@ -13,15 +13,17 @@ interface Partner {
   link: string;
   description: string;
   category: string;
+  isSvg?: boolean;
 }
 
 const partners: Partner[] = [
   {
     name: 'LIXIL',
-    src: CDN + 'wp-content/uploads/2020/12/lixil-sm.png',
+    src: 'https://www.lixil.com/common/img/logo.svg',
     link: 'https://www.lixil.com/',
     description: 'Global leader in housing and building materials, TOSTEM\'s parent company driving innovation across living spaces worldwide.',
     category: 'Parent Company',
+    isSvg: true,
   },
   {
     name: 'TOSTEM',
@@ -32,33 +34,59 @@ const partners: Partner[] = [
   },
   {
     name: 'GROHE',
-    src: CDN + 'wp-content/uploads/2020/12/grohe-sm.png',
+    src: 'https://static.cdnlogo.com/logos/g/44/grohe.svg',
     link: 'https://www.grohe.com/en/corporate/homepage.html',
     description: 'World-leading premium brand for bathroom solutions and kitchen fittings, renowned for German engineering and sustainable design.',
     category: 'LIXIL Group',
+    isSvg: true,
   },
   {
     name: 'American Standard',
-    src: CDN + 'wp-content/uploads/2020/12/american-s-sm.png',
+    src: 'https://www.lixil.com/en/about/img/about_brand_as_img.jpg',
     link: 'https://www.americanstandard.in/',
     description: 'Iconic American brand offering high-quality bathroom and kitchen products, combining innovation with timeless design for modern Indian homes.',
     category: 'LIXIL Group',
   },
   {
     name: 'INAX',
-    src: CDN + 'wp-content/uploads/2020/12/inax-sm.png',
+    src: 'https://www.lixil.com/en/about/img/about_brand_inax_img.jpg',
     link: 'https://www.inax.com/',
     description: 'Japan\'s leading brand for premium bathroom fixtures and tiles, known for exquisite craftsmanship and cutting-edge technology.',
     category: 'LIXIL Group',
   },
 ];
 
+// Reusable partner logo renderer
+function PartnerLogo({ partner, className = '', imgClassName = '' }: { partner: Partner; className?: string; imgClassName?: string }) {
+  if (partner.isSvg) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={partner.src}
+        alt={partner.name}
+        className={`w-auto object-contain ${imgClassName}`}
+        style={{ maxWidth: '120px', maxHeight: '48px' }}
+        loading="lazy"
+      />
+    );
+  }
+  return (
+    <Image
+      src={partner.src}
+      alt={partner.name}
+      width={120}
+      height={48}
+      unoptimized
+      className={`h-auto w-auto object-contain ${imgClassName}`}
+      style={{ maxWidth: '120px', maxHeight: '48px' }}
+    />
+  );
+}
+
 export default function PartnersSection() {
   const { colorTheme, designTheme } = useTheme();
   const [visible, setVisible] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [scrollPos, setScrollPos] = useState(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -70,30 +98,11 @@ export default function PartnersSection() {
     return () => observer.disconnect();
   }, []);
 
-  // Auto-scroll for mobile
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-    let animFrame: number;
-    let scrollDirection = 1;
-    const scroll = () => {
-      if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
-        scrollDirection = -1;
-      } else if (container.scrollLeft <= 0) {
-        scrollDirection = 1;
-      }
-      container.scrollLeft += 0.5 * scrollDirection;
-      animFrame = requestAnimationFrame(scroll);
-    };
-    animFrame = requestAnimationFrame(scroll);
-    return () => cancelAnimationFrame(animFrame);
-  }, [visible]);
-
   const designId = designTheme.id;
 
   // ===== CLASSIC LAYOUT =====
   const renderClassic = () => (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
       {partners.map((partner, i) => (
         <div
           key={partner.name}
@@ -106,7 +115,7 @@ export default function PartnersSection() {
             href={partner.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="block text-center p-6 transition-all duration-400 hover:-translate-y-2"
+            className="flex flex-col items-center justify-center p-8 min-h-[140px] transition-all duration-400 hover:-translate-y-2"
             style={{
               borderRadius: designTheme.cardRadius,
               boxShadow: hoveredIndex === i ? designTheme.cardHoverShadow : designTheme.cardShadow,
@@ -114,17 +123,12 @@ export default function PartnersSection() {
               background: designTheme.cardBg,
             }}
           >
-            <div className="flex justify-center mb-4">
-              <Image
-                src={partner.src}
-                alt={partner.name}
-                width={80}
-                height={32}
-                unoptimized
-                className="h-8 w-auto transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
+            <div className="flex justify-center mb-3">
+              <PartnerLogo
+                partner={partner}
+                imgClassName="transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
               />
             </div>
-            <h4 className="text-sm font-bold text-gray-900 mb-1">{partner.name}</h4>
             <span
               className="inline-block px-2 py-0.5 text-[10px] font-semibold rounded-full"
               style={{ color: colorTheme.accent, background: `${colorTheme.accent}15` }}
@@ -151,33 +155,14 @@ export default function PartnersSection() {
               href={partner.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 px-4 py-3 transition-all duration-300 hover:scale-105"
+              className="flex items-center gap-3 px-5 py-4 transition-all duration-300 hover:scale-105"
               style={{ borderRadius: designTheme.buttonRadius }}
             >
-              <Image
-                src={partner.src}
-                alt={partner.name}
-                width={60}
-                height={24}
-                unoptimized
-                className="h-6 w-auto opacity-50 group-hover:opacity-100 transition-opacity duration-500"
+              <PartnerLogo
+                partner={partner}
+                imgClassName="opacity-50 group-hover:opacity-100 transition-opacity duration-500"
               />
-              <span className="text-sm font-medium text-gray-500 group-hover:text-gray-900 transition-colors duration-300">
-                {partner.name}
-              </span>
             </a>
-          </div>
-        ))}
-      </div>
-      {/* Description row */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {partners.slice(0, 3).map((partner, i) => (
-          <div
-            key={partner.name + '-desc'}
-            className={`p-4 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-            style={{ transitionDelay: `${(i + 6) * 100}ms`, borderRadius: designTheme.cardRadius }}
-          >
-            <p className="text-xs text-gray-500 leading-relaxed">{partner.description}</p>
           </div>
         ))}
       </div>
@@ -199,39 +184,34 @@ export default function PartnersSection() {
             href={partner.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-6 p-8 border-2 border-gray-100 transition-all duration-400 group-hover:border-current"
+            className="flex items-center gap-6 p-8 border-2 transition-all duration-400 group-hover:border-current"
             style={{
               borderColor: hoveredIndex === i ? colorTheme.accent : 'rgba(0,0,0,0.06)',
               background: hoveredIndex === i ? `${colorTheme.accent}08` : 'transparent',
             }}
           >
             <div
-              className="w-20 h-20 flex items-center justify-center shrink-0 transition-all duration-400 group-hover:scale-110"
+              className="w-24 h-24 flex items-center justify-center shrink-0 transition-all duration-400 group-hover:scale-110 p-3"
               style={{ background: hoveredIndex === i ? colorTheme.accent : '#f5f5f5' }}
             >
-              <Image
-                src={partner.src}
-                alt={partner.name}
-                width={80}
-                height={32}
-                unoptimized
-                className="h-7 w-auto transition-all duration-400"
-                style={{ filter: hoveredIndex === i ? 'brightness(0) invert(1)' : 'none' }}
+              <PartnerLogo
+                partner={partner}
+                imgClassName={`transition-all duration-400 ${hoveredIndex === i && !partner.isSvg ? 'brightness-0 invert' : ''}`}
               />
             </div>
             <div>
-              <h4
-                className="text-xl font-black uppercase tracking-wide mb-1"
-                style={{ fontWeight: 900, color: hoveredIndex === i ? colorTheme.accent : '#111' }}
+              <span
+                className="inline-block text-xs font-bold uppercase tracking-wider mb-2"
+                style={{ color: colorTheme.accent }}
               >
-                {partner.name}
-              </h4>
+                {partner.category}
+              </span>
               <p className="text-sm text-gray-600 leading-relaxed max-w-sm">{partner.description}</p>
               <span
                 className="inline-block mt-2 text-xs font-bold uppercase tracking-wider"
                 style={{ color: colorTheme.accent }}
               >
-                {partner.category} <ExternalLink className="w-3 h-3 inline" />
+                Visit Website <ExternalLink className="w-3 h-3 inline" />
               </span>
             </div>
           </a>
@@ -242,7 +222,7 @@ export default function PartnersSection() {
 
   // ===== GLASSMORPHISM LAYOUT =====
   const renderGlassmorphism = () => (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
       {partners.map((partner, i) => (
         <div
           key={partner.name}
@@ -253,7 +233,7 @@ export default function PartnersSection() {
             href={partner.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="block p-6 backdrop-blur-xl transition-all duration-400 hover:-translate-y-3 hover:scale-[1.02]"
+            className="flex flex-col items-center justify-center p-6 min-h-[150px] backdrop-blur-xl transition-all duration-400 hover:-translate-y-3 hover:scale-[1.02]"
             style={{
               borderRadius: designTheme.cardRadius,
               background: `${colorTheme.primary}15`,
@@ -262,21 +242,11 @@ export default function PartnersSection() {
             }}
           >
             <div
-              className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 mx-auto backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+              className="w-16 h-16 rounded-xl flex items-center justify-center mb-3 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 p-2"
               style={{ background: `${colorTheme.accent}20`, border: `1px solid ${colorTheme.accent}30` }}
             >
-              <Image
-                src={partner.src}
-                alt={partner.name}
-                width={48}
-                height={20}
-                unoptimized
-                className="h-5 w-auto"
-              />
+              <PartnerLogo partner={partner} imgClassName="max-w-[80px] max-h-[32px]" />
             </div>
-            <h4 className="text-sm font-bold text-center mb-1" style={{ color: colorTheme.primary }}>
-              {partner.name}
-            </h4>
             <span
               className="block text-center text-[10px] font-semibold"
               style={{ color: colorTheme.accent }}
@@ -291,7 +261,7 @@ export default function PartnersSection() {
 
   // ===== NEUMORPHIC LAYOUT =====
   const renderNeumorphic = () => (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-8 p-4" style={{ background: '#e8e8f0' }}>
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 p-4" style={{ background: '#e8e8f0' }}>
       {partners.map((partner, i) => (
         <div
           key={partner.name}
@@ -302,7 +272,7 @@ export default function PartnersSection() {
             href={partner.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center p-8 transition-all duration-400 hover:-translate-y-1"
+            className="flex flex-col items-center justify-center p-8 min-h-[150px] transition-all duration-400 hover:-translate-y-1"
             style={{
               borderRadius: designTheme.cardRadius,
               background: '#e8e8f0',
@@ -310,21 +280,13 @@ export default function PartnersSection() {
             }}
           >
             <div
-              className="w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110"
+              className="w-16 h-16 rounded-full flex items-center justify-center mb-3 p-2 transition-transform duration-500 group-hover:scale-110"
               style={{
                 boxShadow: 'inset 4px 4px 8px rgba(0,0,0,0.08), inset -4px -4px 8px rgba(255,255,255,0.8)',
               }}
             >
-              <Image
-                src={partner.src}
-                alt={partner.name}
-                width={56}
-                height={24}
-                unoptimized
-                className="h-6 w-auto"
-              />
+              <PartnerLogo partner={partner} imgClassName="max-w-[50px] max-h-[24px]" />
             </div>
-            <h4 className="text-sm font-semibold text-gray-800 mb-1">{partner.name}</h4>
             <span className="text-[10px] text-gray-500">{partner.category}</span>
           </a>
         </div>
@@ -347,19 +309,14 @@ export default function PartnersSection() {
             rel="noopener noreferrer"
             className="flex items-center gap-6 py-6 px-4 border-b border-gray-200 hover:border-gray-400 transition-all duration-300"
           >
-            <div className="w-24 shrink-0">
-              <Image
-                src={partner.src}
-                alt={partner.name}
-                width={96}
-                height={36}
-                unoptimized
-                className="h-8 w-auto grayscale group-hover:grayscale-0 transition-all duration-500"
+            <div className="w-32 shrink-0">
+              <PartnerLogo
+                partner={partner}
+                imgClassName="grayscale group-hover:grayscale-0 transition-all duration-500"
               />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-baseline gap-3 mb-1">
-                <h4 className="text-lg font-extrabold text-gray-900 tracking-tight">{partner.name}</h4>
                 <span className="text-[10px] uppercase tracking-widest font-bold" style={{ color: colorTheme.accent }}>
                   {partner.category}
                 </span>
@@ -377,7 +334,7 @@ export default function PartnersSection() {
 
   // ===== GEOMETRIC LAYOUT =====
   const renderGeometric = () => (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
       {partners.map((partner, i) => {
         const offsets = [
           'translate-y-0', 'md:-translate-y-4', 'translate-y-0',
@@ -393,24 +350,16 @@ export default function PartnersSection() {
               href={partner.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center p-6 border-2 transition-all duration-300 group-hover:-translate-y-2"
+              className="flex flex-col items-center justify-center p-6 min-h-[150px] border-2 transition-all duration-300 group-hover:-translate-y-2"
               style={{
                 borderColor: `${colorTheme.primary}20`,
                 background: 'white',
                 boxShadow: `4px 4px 0 ${colorTheme.primary}15`,
               }}
             >
-              <div className="w-16 h-16 flex items-center justify-center mb-3" style={{ background: `${colorTheme.accent}10` }}>
-                <Image
-                  src={partner.src}
-                  alt={partner.name}
-                  width={60}
-                  height={24}
-                  unoptimized
-                  className="h-6 w-auto"
-                />
+              <div className="w-20 h-14 flex items-center justify-center mb-3" style={{ background: `${colorTheme.accent}10` }}>
+                <PartnerLogo partner={partner} imgClassName="max-w-[80px] max-h-[32px]" />
               </div>
-              <h4 className="text-sm font-extrabold text-gray-900 uppercase tracking-wider mb-1">{partner.name}</h4>
               <span className="text-[10px] font-bold" style={{ color: colorTheme.accent }}>{partner.category}</span>
             </a>
           </div>
@@ -423,7 +372,7 @@ export default function PartnersSection() {
   const renderOrganic = () => (
     <div className="flex flex-wrap justify-center gap-6 md:gap-8">
       {partners.map((partner, i) => {
-        const sizes = ['w-40 h-40', 'w-48 h-48', 'w-36 h-36', 'w-44 h-44', 'w-40 h-40', 'w-36 h-36'];
+        const sizes = ['w-40 h-40', 'w-48 h-48', 'w-36 h-36', 'w-44 h-44', 'w-40 h-40'];
         return (
           <div
             key={partner.name}
@@ -442,15 +391,11 @@ export default function PartnersSection() {
                 boxShadow: `0 8px 30px ${colorTheme.primary}10`,
               }}
             >
-              <Image
-                src={partner.src}
-                alt={partner.name}
-                width={64}
-                height={28}
-                unoptimized
-                className="h-7 w-auto mb-3 transition-transform duration-500 group-hover:scale-110"
+              <PartnerLogo
+                partner={partner}
+                imgClassName="mb-3 transition-transform duration-500 group-hover:scale-110 max-w-[80px] max-h-[36px]"
               />
-              <span className="text-xs font-medium text-gray-700 text-center">{partner.name}</span>
+              <span className="text-[10px] font-medium text-gray-500 text-center">{partner.category}</span>
             </a>
           </div>
         );
@@ -462,32 +407,25 @@ export default function PartnersSection() {
   const renderCorporate = () => (
     <div>
       {/* Partner logos in horizontal strip */}
-      <div className="grid grid-cols-3 md:grid-cols-6 gap-px bg-gray-200 mb-8" style={{ borderRadius: designTheme.cardRadius, overflow: 'hidden' }}>
+      <div className="grid grid-cols-3 md:grid-cols-5 gap-px bg-gray-200" style={{ borderRadius: designTheme.cardRadius, overflow: 'hidden' }}>
         {partners.map((partner, i) => (
           <div
             key={partner.name}
-            className={`group bg-white p-6 flex flex-col items-center justify-center transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            className={`group bg-white p-8 flex flex-col items-center justify-center min-h-[120px] transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
             style={{ transitionDelay: `${i * 80}ms` }}
           >
             <a href={partner.link} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center">
-              <Image
-                src={partner.src}
-                alt={partner.name}
-                width={72}
-                height={28}
-                unoptimized
-                className="h-7 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-500 mb-2"
+              <PartnerLogo
+                partner={partner}
+                imgClassName="opacity-60 group-hover:opacity-100 transition-opacity duration-500 mb-2"
               />
-              <span className="text-[10px] font-bold text-gray-500 group-hover:text-gray-900 transition-colors duration-300 uppercase tracking-wider">
-                {partner.name}
-              </span>
             </a>
           </div>
         ))}
       </div>
       {/* Partnership statement */}
       <div
-        className="p-6 text-center"
+        className="p-6 text-center mt-8"
         style={{
           borderRadius: designTheme.cardRadius,
           border: `1px solid ${colorTheme.accent}20`,
@@ -504,7 +442,7 @@ export default function PartnersSection() {
 
   // ===== FUTURISTIC LAYOUT =====
   const renderFuturistic = () => (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
       {partners.map((partner, i) => (
         <div
           key={partner.name}
@@ -529,20 +467,14 @@ export default function PartnersSection() {
               style={{ background: `linear-gradient(90deg, transparent, ${colorTheme.accent}60, transparent)`, backgroundSize: '200% 100%' }}
             />
             <div className="flex items-center gap-3 mb-3">
-              <Image
-                src={partner.src}
-                alt={partner.name}
-                width={48}
-                height={20}
-                unoptimized
-                className="h-5 w-auto"
-                style={{ filter: `drop-shadow(0 0 4px ${colorTheme.accent}40)` }}
+              <PartnerLogo
+                partner={partner}
+                imgClassName="max-w-[60px] max-h-[24px]"
               />
               <span className="text-[10px] font-mono uppercase tracking-wider" style={{ color: colorTheme.accent }}>
                 {partner.category}
               </span>
             </div>
-            <h4 className="text-sm font-bold text-white mb-2">{partner.name}</h4>
             <p className="text-[11px] text-white/50 leading-relaxed line-clamp-2">{partner.description}</p>
             {/* Corner accent */}
             <div className="absolute bottom-0 right-0 w-6 h-6" style={{ borderTop: `1px solid ${colorTheme.accent}40`, borderLeft: `1px solid ${colorTheme.accent}40` }} />

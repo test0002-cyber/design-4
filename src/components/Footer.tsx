@@ -8,11 +8,11 @@ import { Mail, Phone, MapPin, Send, ArrowUp } from 'lucide-react';
 const CDN = 'https://cdn-ildpppi.nitrocdn.com/xjROyyheOXReIMzlTkTVBhxlcelzUnWY/assets/images/optimized/rev-c76f7e6/www.tostemindia.com/';
 
 const partnerLogos = [
-  { name: 'American Standard', src: CDN + 'wp-content/uploads/2020/12/american-s-sm.png' },
-  { name: 'GROHE', src: CDN + 'wp-content/uploads/2020/12/grohe-sm.png' },
-  { name: 'TOSTEM', src: CDN + 'wp-content/uploads/2020/12/tostem-sm.png' },
-  { name: 'INAX', src: CDN + 'wp-content/uploads/2020/12/inax-sm.png' },
-  { name: 'LIXIL', src: CDN + 'wp-content/uploads/2020/12/lixil-sm.png' },
+  { name: 'LIXIL', src: 'https://www.lixil.com/common/img/logo.svg', isSvg: true },
+  { name: 'TOSTEM', src: CDN + 'wp-content/uploads/2020/12/tostem-sm.png', isSvg: false },
+  { name: 'GROHE', src: 'https://static.cdnlogo.com/logos/g/44/grohe.svg', isSvg: true },
+  { name: 'American Standard', src: 'https://www.lixil.com/en/about/img/about_brand_as_img.jpg', isSvg: false },
+  { name: 'INAX', src: 'https://www.lixil.com/en/about/img/about_brand_inax_img.jpg', isSvg: false },
 ];
 
 const socialLinks = [
@@ -199,15 +199,26 @@ export default function Footer() {
           <p className="text-xs text-white/40 uppercase tracking-wider mb-4 text-center">LIXIL Group Brands</p>
           <div className="flex items-center justify-center gap-8 flex-wrap">
             {partnerLogos.map((logo) => (
-              <div key={logo.name} className="opacity-50 hover:opacity-100 transition-opacity duration-300">
-                <Image
-                  src={logo.src}
-                  alt={logo.name}
-                  width={60}
-                  height={24}
-                  unoptimized
-                  className="h-6 w-auto"
-                />
+              <div key={logo.name} className="opacity-50 hover:opacity-100 transition-opacity duration-300" style={{ filter: 'brightness(0) invert(1)' }}>
+                {logo.isSvg ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className="h-6 w-auto"
+                    style={{ maxWidth: '80px' }}
+                    loading="lazy"
+                  />
+                ) : (
+                  <Image
+                    src={logo.src}
+                    alt={logo.name}
+                    width={60}
+                    height={24}
+                    unoptimized
+                    className="h-6 w-auto"
+                  />
+                )}
               </div>
             ))}
           </div>

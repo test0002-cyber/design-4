@@ -91,27 +91,94 @@ export default function ColourSection() {
                   <span className="text-sm font-semibold text-gray-700">Colour Preview</span>
                 </div>
 
-                {/* Simulated window frame with background image */}
-                <div className="relative bg-gradient-to-br from-sky-200 to-sky-400 h-52 mb-4 overflow-hidden">
-                  <Image
-                    src={CDN + 'wp-content/uploads/2020/08/ez-banner-slide-1171x506.jpg'}
-                    alt="Colour preview background"
-                    fill
-                    unoptimized
-                    className="object-cover opacity-30"
-                    sizes="33vw"
-                  />
-                  {/* Window frame overlay */}
+                {/* Realistic window frame with broad borders and transparent glass */}
+                <div className="relative h-72 mb-4 overflow-hidden" style={{ borderRadius: '4px' }}>
+                  {/* Outer frame - broad border */}
                   <div
-                    className="absolute inset-2 border-4 transition-colors duration-500"
-                    style={{ borderColor: selectedColour.hex }}
+                    className="absolute inset-0 transition-colors duration-500"
+                    style={{
+                      background: selectedColour.hex,
+                      borderRadius: '4px',
+                      boxShadow: `inset 0 0 8px rgba(0,0,0,0.3), 0 4px 20px rgba(0,0,0,0.2)`,
+                    }}
                   >
-                    {/* Cross bars */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-full" style={{ background: selectedColour.hex }} />
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 h-1 w-full" style={{ background: selectedColour.hex }} />
+                    {/* Top frame bar */}
+                    <div
+                      className="absolute top-0 left-0 right-0 transition-colors duration-500"
+                      style={{ height: '22px', background: selectedColour.hex }}
+                    />
+                    {/* Bottom frame bar */}
+                    <div
+                      className="absolute bottom-0 left-0 right-0 transition-colors duration-500"
+                      style={{ height: '22px', background: selectedColour.hex }}
+                    />
+                    {/* Left frame bar */}
+                    <div
+                      className="absolute top-0 left-0 bottom-0 transition-colors duration-500"
+                      style={{ width: '22px', background: selectedColour.hex }}
+                    />
+                    {/* Right frame bar */}
+                    <div
+                      className="absolute top-0 right-0 bottom-0 transition-colors duration-500"
+                      style={{ width: '22px', background: selectedColour.hex }}
+                    />
+
+                    {/* Glass area - transparent with background image showing through */}
+                    <div className="absolute" style={{ top: '22px', left: '22px', right: '22px', bottom: '22px' }}>
+                      {/* Background image visible through glass */}
+                      <Image
+                        src={CDN + 'wp-content/uploads/2020/08/ez-banner-slide-1171x506.jpg'}
+                        alt="Colour preview background"
+                        fill
+                        unoptimized
+                        className="object-cover"
+                        sizes="33vw"
+                      />
+
+                      {/* Transparent glass overlay with subtle reflection */}
+                      <div
+                        className="absolute inset-0"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 40%, rgba(200,220,255,0.08) 60%, rgba(255,255,255,0.12) 100%)',
+                          backdropFilter: 'blur(0.5px)',
+                        }}
+                      />
+
+                      {/* Center vertical mullion (broad divider) */}
+                      <div
+                        className="absolute top-0 left-1/2 -translate-x-1/2 transition-colors duration-500"
+                        style={{ width: '12px', height: '100%', background: selectedColour.hex, boxShadow: '1px 0 3px rgba(0,0,0,0.15), -1px 0 3px rgba(0,0,0,0.15)' }}
+                      />
+
+                      {/* Center horizontal mullion (broad divider) */}
+                      <div
+                        className="absolute left-0 top-1/2 -translate-y-1/2 transition-colors duration-500"
+                        style={{ height: '12px', width: '100%', background: selectedColour.hex, boxShadow: '0 1px 3px rgba(0,0,0,0.15), 0 -1px 3px rgba(0,0,0,0.15)' }}
+                      />
+
+                      {/* Glass reflection - top left highlight */}
+                      <div
+                        className="absolute top-2 left-2 w-1/3 h-1/4 rounded-full"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 70%)',
+                        }}
+                      />
+
+                      {/* Glass reflection - bottom right subtle highlight */}
+                      <div
+                        className="absolute bottom-2 right-2 w-1/4 h-1/5 rounded-full"
+                        style={{
+                          background: 'linear-gradient(315deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)',
+                        }}
+                      />
+                    </div>
+
+                    {/* Frame edge highlights (3D effect) */}
+                    <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(255,255,255,0.2)' }} />
+                    <div className="absolute top-0 left-0 bottom-0 w-px" style={{ background: 'rgba(255,255,255,0.15)' }} />
+                    <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'rgba(0,0,0,0.2)' }} />
+                    <div className="absolute top-0 right-0 bottom-0 w-px" style={{ background: 'rgba(0,0,0,0.15)' }} />
                   </div>
-                  {/* Sky reflection */}
-                  <div className="absolute top-4 right-4 w-12 h-8 bg-white/30 rounded-full" />
                 </div>
 
                 <div className="text-center">
